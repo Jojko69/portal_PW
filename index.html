@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Politechnika Warszawska - Mapa i Struktura</title>
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Kolory Uczelni i Mapy */
+            --pw-blue: #00458d;
+            --pw-gold: #f2c100;
+            --pw-light-blue: #e6f0fa;
+            --text-dark: #1a1a1a;
+            --sidebar-width: 380px;
+            
+            /* Kolory Kategorii Mapy */
+            --color-wydzial: #00458d;
+            --color-admin: #e67e22;
+            --color-ds: #27ae60;
+            --color-budynek: #8e44ad;
+
+            /* Kolory Struktury Organizacyjnej */
+            --org-rektor: #e74c3c;
+            --org-rozwoj: #5dade2;
+            --org-nauka: #3498db;
+            --org-ogolne: #2e86c1;
+            --org-studia: #85c1e9;
+            --org-studenckie: #2874a6;
+            --org-filia: #5dade2;
+            --org-kanclerz: #27ae60;
+            --org-kanclerz-sub: #2ecc71;
+            --org-kwestor: #d35400;
+            --org-kwestor-sub: #f5b041;
+            --org-wydzialy: #f1c40f;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', sans-serif; background-color: #f4f7f6; color: var(--text-dark); height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+
+        /* NAWIGACJA GŁÓWNA (ZAKŁADKI) */
+        #main-nav {
+            background: var(--pw-blue);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px 20px 0 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            z-index: 2000;
+            position: relative;
+        }
+        .nav-brand { font-weight: 700; font-size: 1.5rem; text-align: center; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; }
+        .nav-brand span { color: var(--pw-gold); }
+        
+        .tab-buttons { display: flex; height: 45px; overflow-x: auto; width: 100%; justify-content: center; scrollbar-width: none; }
+        .tab-buttons::-webkit-scrollbar { display: none; }
+        .tab-btn {
+            background: transparent; border: none; color: rgba(255,255,255,0.7); font-family: inherit;
+            font-weight: 600; font-size: 0.95rem; padding: 0 20px; cursor: pointer; transition: 0.2s;
+            border-bottom: 4px solid transparent; height: 100%; white-space: nowrap;
+        }
+        .tab-btn:hover { color: white; background: rgba(255,255,255,0.05); }
+        .tab-btn.active { color: white; border-bottom-color: var(--pw-gold); background: rgba(255,255,255,0.1); }
+
+        .tab-content { display: none; flex: 1; height: calc(100vh - 135px); width: 100%; }
+        .tab-content.active { display: flex; }
+        
+        /* Stopka autorska */
+        #main-footer {
+            height: 30px;
+            background: var(--pw-blue);
+            color: rgba(255, 255, 255, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            z-index: 2000;
+            position: relative;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+        }
+
+        /* ========================================================
+           STYLIZACJA ZAKŁADKI 1: MAPA 
+           ======================================================== */
+        #sidebar { width: var(--sidebar-width); height: 100%; background: white; box-shadow: 2px 0 15px rgba(0,0,0,0.1); z-index: 1001; display: flex; flex-direction: column; }
+        .controls { padding: 20px; border-bottom: 1px solid #eee; }
+        .search-box { margin-bottom: 15px; }
+        #search-input { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; font-family: inherit; font-size: 0.9rem; outline: none; transition: border-color 0.2s; }
+        #search-input:focus { border-color: var(--pw-blue); }
+        .btn-all { width: 100%; padding: 12px; background: var(--pw-gold); border: none; border-radius: 8px; font-weight: 700; color: var(--pw-blue); cursor: pointer; transition: all 0.2s; margin-bottom: 15px; text-transform: uppercase; font-size: 0.8rem; }
+        .btn-all:hover { background: #e1b300; transform: translateY(-1px); box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .filters { display: flex; flex-direction: column; gap: 10px; }
+        .filter-item { display: flex; align-items: center; font-size: 0.9rem; cursor: pointer; font-weight: 600; }
+        .filter-item input { margin-right: 10px; cursor: pointer; width: 16px; height: 16px; }
+        .legend { padding: 15px 20px; background: #fafafa; font-size: 0.8rem; border-bottom: 1px solid #eee; }
+        .legend-title { font-weight: 700; margin-bottom: 8px; text-transform: uppercase; color: #666; font-size: 0.7rem; }
+        .legend-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+        .legend-box { display: flex; align-items: center; gap: 6px; }
+        .color-dot { width: 12px; height: 12px; border-radius: 50%; }
+        .object-list-wrapper { flex: 1; overflow-y: auto; padding: 0; }
+        .object-item { padding: 12px 20px; border-bottom: 1px solid #f0f0f0; cursor: pointer; transition: background 0.2s; position: relative; }
+        .object-item:hover { background: var(--pw-light-blue); }
+        .object-item h4 { font-size: 0.9rem; margin-bottom: 3px; color: var(--pw-blue); padding-right: 25px; }
+        .object-item p { font-size: 0.75rem; color: #666; margin-bottom: 4px; }
+        .tag { display: inline-block; padding: 2px 6px; border-radius: 4px; font-size: 0.65rem; font-weight: 700; color: white; }
+        .no-coords-badge { position: absolute; top: 15px; right: 15px; font-size: 1rem; cursor: help; }
+        
+        #map { flex: 1; height: 100%; z-index: 1000; }
+        .leaflet-popup-content-wrapper { border-radius: 12px; padding: 5px; }
+        .leaflet-popup-content h3 { color: var(--pw-blue); margin-bottom: 5px; font-size: 1.1rem; }
+        .popup-info { font-size: 0.9rem; line-height: 1.4; }
+        .classic-tooltip { background: rgba(255, 255, 255, 0.95); border: 1px solid rgba(0,0,0,0.2); box-shadow: 0 1px 3px rgba(0,0,0,0.2); font-weight: 700; color: #222; font-size: 0.75rem; padding: 3px 6px; border-radius: 4px; white-space: nowrap; }
+        .classic-tooltip::before { display: none; }
+
+        /* ========================================================
+           STYLIZACJA ZAKŁADKI 2: STRUKTURA ORGANIZACYJNA
+           ======================================================== */
+        #org-tab {
+            background: #f4f7f6;
+            overflow-y: auto;
+            padding: 30px;
+            display: none; 
+            flex-direction: column;
+            align-items: center;
+        }
+        #org-tab.active { display: flex; }
+
+        .org-container { max-width: 1400px; width: 100%; }
+        
+        .org-header-doc { text-align: center; margin-bottom: 20px; color: #555; }
+        .org-header-doc h2 { font-size: 1.8rem; color: var(--pw-blue); margin-bottom: 10px; }
+        .org-header-doc p { font-size: 0.9rem; }
+        
+        .org-toggle-container {
+            display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; flex-wrap: wrap;
+        }
+        .org-toggle-btn {
+            padding: 10px 25px; border: 2px solid var(--pw-blue); background: white;
+            color: var(--pw-blue); font-weight: 700; border-radius: 30px; cursor: pointer; transition: 0.2s;
+            font-family: inherit; font-size: 0.95rem;
+        }
+        .org-toggle-btn.active, .org-toggle-btn:hover {
+            background: var(--pw-blue); color: white; box-shadow: 0 4px 10px rgba(0,69,141,0.2);
+        }
+
+        .org-view { display: none; width: 100%; animation: fadeIn 0.4s ease-in-out; }
+        .org-view.active { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .org-top-node {
+            background: var(--org-rektor); color: white;
+            padding: 20px; text-align: center; font-size: 1.5rem; font-weight: 700;
+            border-radius: 8px; margin: 0 auto 30px auto; width: 300px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .org-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 40px; }
+        .org-grid-3col { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; margin-bottom: 40px; }
+        .org-column { background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05); display: flex; flex-direction: column; }
+        .org-col-title { padding: 15px; color: white; font-weight: 700; text-align: center; font-size: 1.05rem; min-height: 60px; display: flex; align-items: center; justify-content: center; }
+        .org-sub-title { padding: 10px; color: white; font-weight: 600; text-align: center; font-size: 0.9rem; background: rgba(0,0,0,0.15); }
+        .org-list { list-style: none; padding: 0; margin: 0; flex: 1; }
+        .org-list li { padding: 12px 15px; border-bottom: 1px solid #f0f0f0; font-size: 0.85rem; color: #333; line-height: 1.3; }
+        .org-list li:last-child { border-bottom: none; }
+        .org-list li:hover { background: #fdfdfd; }
+        .org-list-2col { columns: 2; column-gap: 20px; padding: 15px; }
+        .org-list-2col li { break-inside: avoid; border-bottom: none; padding: 8px 0; border-bottom: 1px dashed #eee; }
+        .org-faculties { background: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); overflow: hidden; }
+        .faculties-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); padding: 20px; gap: 10px; }
+        .faculty-item { background: #fffbea; border: 1px solid #fdebd0; padding: 10px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; text-align: center; color: #7d6608; transition: background 0.2s; }
+        .faculty-item:hover { background: #fcf3cf; }
+
+        .bg-rektor { background: var(--org-rektor); }
+        .bg-rozwoj { background: var(--org-rozwoj); }
+        .bg-nauka { background: var(--org-nauka); }
+        .bg-ogolne { background: var(--org-ogolne); }
+        .bg-studia { background: var(--org-studia); }
+        .bg-studenckie { background: var(--org-studenckie); }
+        .bg-filia { background: var(--org-filia); }
+        .bg-kanclerz { background: var(--org-kanclerz); }
+        .bg-kanclerz-sub { background: var(--org-kanclerz-sub); }
+        .bg-kwestor { background: var(--org-kwestor); }
+        .bg-kwestor-sub { background: var(--org-kwestor-sub); }
+        .bg-wydzialy { background: var(--org-wydzialy); color: #333 !important;}
+
+        .org-search-container { width: 100%; max-width: 600px; margin: 0 auto 25px auto; }
+        .org-search-input { width: 100%; padding: 14px 20px; font-size: 1.05rem; border: 2px solid #ddd; border-radius: 30px; outline: none; transition: border-color 0.2s, box-shadow 0.2s; text-align: center; }
+        .org-search-input:focus { border-color: var(--pw-blue); box-shadow: 0 4px 12px rgba(0,69,141,0.1); }
+        .org-highlight { background-color: var(--pw-gold) !important; color: var(--pw-blue) !important; font-weight: 700 !important; border-radius: 4px; }
+
+
+        /* ========================================================
+           STYLIZACJA ZAKŁADKI 3 I 4: TABELE (KODY / TELEFONY)
+           ======================================================== */
+        .table-tab-wrapper {
+            background: #f4f7f6;
+            overflow-y: auto;
+            padding: 30px;
+            display: none; 
+            flex-direction: column;
+            align-items: center;
+        }
+        .table-tab-wrapper.active { display: flex; }
+
+        .data-container { max-width: 1200px; width: 100%; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        
+        .data-upload-btn { display: inline-block; background: var(--pw-blue); color: white; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 0.9rem; transition: 0.2s; border: 2px solid var(--pw-blue); }
+        .data-upload-btn:hover { background: #003366; }
+        
+        .data-status-msg { margin-top: 10px; font-size: 0.9rem; color: var(--pw-blue); font-weight: 600; text-align: center;}
+        .data-status-error { color: #e74c3c; }
+
+        .data-table-wrapper { width: 100%; overflow-x: auto; margin-top: 20px; border-radius: 8px; border: 1px solid #eee; }
+        .data-table { width: 100%; border-collapse: collapse; text-align: left; }
+        .data-table th, .data-table td { padding: 14px 20px; border-bottom: 1px solid #eee; font-size: 0.9rem; }
+        .data-table th { background: var(--pw-light-blue); color: var(--pw-blue); font-weight: 700; white-space: nowrap; position: sticky; top: 0; z-index: 10; }
+        .data-table tr:hover { background: #fdfdfd; }
+        .data-table tr:last-child td { border-bottom: none; }
+
+        .code-symbol { display: inline-block; font-weight: 700; color: #222; background: var(--pw-gold); padding: 4px 10px; border-radius: 4px; font-size: 0.85rem; letter-spacing: 0.5px; }
+        .code-number { font-family: monospace; font-size: 1rem; color: var(--pw-blue); font-weight: 600; }
+        
+        .phone-link { color: var(--pw-blue); font-weight: 600; text-decoration: none; }
+        .phone-link:hover { text-decoration: underline; }
+        .email-link { color: #555; text-decoration: none; }
+        .email-link:hover { color: var(--pw-blue); text-decoration: underline; }
+
+        @media (max-width: 768px) {
+            #map-tab { flex-direction: column; }
+            #sidebar { width: 100%; height: 45%; box-shadow: 0 -2px 15px rgba(0,0,0,0.1); }
+            #map { height: 55%; }
+            #org-tab, .table-tab-wrapper { padding: 15px; }
+            .org-top-node { width: 100%; }
+            .org-list-2col { columns: 1; }
+            .data-container { padding: 15px; }
+            .tab-buttons { justify-content: flex-start; -webkit-overflow-scrolling: touch; }
+            .nav-brand { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- GÓRNA NAWIGACJA Z ZAKŁADKAMI -->
+    <nav id="main-nav">
+        <div class="nav-brand">PORTAL <span>DZIAŁU TECHNICZNEGO</span></div>
+        <div class="tab-buttons">
+            <button class="tab-btn active" onclick="switchTab('map-tab', this)">Mapa Obiektów</button>
+            <button class="tab-btn" onclick="switchTab('org-tab', this)">Struktura Organizacyjna</button>
+            <button class="tab-btn" onclick="switchTab('codes-tab', this)">Kody jednostek</button>
+            <button class="tab-btn" onclick="switchTab('phone-tab', this)">Książka Telefoniczna</button>
+        </div>
+    </nav>
+
+    <!-- ZAKŁADKA 1: MAPA -->
+    <div id="map-tab" class="tab-content active">
+        <aside id="sidebar">
+            <div class="controls">
+                <div class="search-box">
+                    <input type="text" id="search-input" placeholder="Szukaj obiektu (np. Bratniak)...">
+                </div>
+                <button class="btn-all" onclick="resetMapView()">Pokaż wszystkie obiekty na mapie</button>
+
+                <div class="filters" id="filter-container">
+                    <label class="filter-item"><input type="checkbox" class="filter-check" checked value="wydział"> Wydziały</label>
+                    <label class="filter-item"><input type="checkbox" class="filter-check" checked value="administracja"> Administracja</label>
+                    <label class="filter-item"><input type="checkbox" class="filter-check" checked value="akademik"> Akademiki</label>
+                    <label class="filter-item"><input type="checkbox" class="filter-check" checked value="budynek PW"> Budynki PW</label>
+                </div>
+            </div>
+
+            <div class="legend">
+                <div class="legend-title">Legenda</div>
+                <div class="legend-grid">
+                    <div class="legend-box"><div class="color-dot" style="background: var(--color-wydzial)"></div> Wydziały</div>
+                    <div class="legend-box"><div class="color-dot" style="background: var(--color-admin)"></div> Administracja</div>
+                    <div class="legend-box"><div class="color-dot" style="background: var(--color-ds)"></div> Akademiki</div>
+                    <div class="legend-box"><div class="color-dot" style="background: var(--color-budynek)"></div> Budynki PW</div>
+                </div>
+            </div>
+
+            <div class="object-list-wrapper" id="object-list"></div>
+        </aside>
+        <main id="map"></main>
+    </div>
+
+    <!-- ZAKŁADKA 2: STRUKTURA ORGANIZACYJNA -->
+    <div id="org-tab" class="tab-content">
+        <div class="org-container">
+            <div class="org-header-doc">
+                <h2>SCHEMAT POLITECHNIKI WARSZAWSKIEJ</h2>
+                <p>Wybierz interesujący Cię rodzaj struktury z dokumentów uczelni.</p>
+            </div>
+
+            <div class="org-search-container">
+                <input type="text" id="org-search-input" class="org-search-input" placeholder="Wyszukaj dział, wydział lub biuro (np. Tech)...">
+            </div>
+
+            <div class="org-toggle-container">
+                <button class="org-toggle-btn active" onclick="switchOrgView('view-merytoryczna', this)">Nadzór Merytoryczny (Zał. 7b)</button>
+                <button class="org-toggle-btn" onclick="switchOrgView('view-organizacyjna', this)">Podległość Organizacyjna (Zał. 7a)</button>
+            </div>
+
+            <div class="org-top-node">REKTOR</div>
+
+            <div id="view-merytoryczna" class="org-view active">
+                <div class="org-grid">
+                    <div class="org-column"><div class="org-col-title bg-rozwoj">Prorektor ds. Rozwoju</div><ul class="org-list"><li>Centrum Cyberbezpieczeństwa</li><li>Centrum informatyzacji PW</li><li>Centrum Innowacji</li><li>Centrum Projektów Rozwojowych</li><li>CEZAMAT</li><li>Dział Analiz Strategicznych</li><li>Dział Logistyki i Zakupów</li><li>Uczelniane Centrum Badawcze Obronności i Bezpieczeństwa</li></ul></div>
+                    <div class="org-column"><div class="org-col-title bg-nauka">Prorektor ds. Nauki</div><ul class="org-list"><li>Biblioteka Główna</li><li>Biuro ds. Społecznej Odpowiedzialności Uczelni</li><li>Centrum Doskonałości Sztucznej Inteligencji</li><li>HealthTEC</li><li>C-QuaNT</li><li>Centrum Obsługi Projektów</li><li>Centrum Wiarygodnej Sztucznej Inteligencji</li><li>Centrum Współpracy Międzynarodowej</li><li>Dział Centralnej Sprawozdawczości</li><li>Szkoła Doktorska PW</li><li>Uczelniane Centrum Badawcze Lotnictwa i Kosmonautyki</li><li>Zespół ds. Nauki</li></ul></div>
+                    <div class="org-column"><div class="org-col-title bg-ogolne">Prorektor ds. Ogólnych</div><ul class="org-list"><li>Biuro Obsługi Prawnej</li><li>Biuro Rektora</li><li>Biuro Spraw Osobowych</li><li>Dział Bezpieczeństwa Informacji PW</li><li>Dział ds. Ochrony Informacji Niejawnych i Spraw Obronnych</li><li>Dział Ekonomiczny</li><li>Dział Socjalny</li><li>Dział Wsparcia Rozwoju Pracowników</li><li>Inspektorat BHP</li><li>Zespół ds. Systemów Zarządzania Jakością</li></ul></div>
+                    <div class="org-column"><div class="org-col-title bg-studia">Prorektor ds. Studiów</div><ul class="org-list"><li>Biuro Komunikacji i Promocji</li><li>Centrum Studiów Zaawansowanych</li><li>Centrum Wsparcia Dydaktyki</li><li>Dział ds. Studiów</li><li>Oficyna Wydawnicza</li><li>Ośrodek Kształcenia na Odległość</li><li>Studium Języków Obcych</li><li>Szkoła Biznesu</li><li>UTW PW</li></ul></div>
+                    <div class="org-column"><div class="org-col-title bg-studenckie">Prorektor ds. Studenckich</div><ul class="org-list"><li>Biuro ds. Przyjęć na Studia</li><li>Biuro Karier</li><li>Chór Akademicki PW</li><li>Muzeum PW</li><li>Orkiestra Rozrywkowa PW</li><li>Studium Wychowania Fizycznego i Sportu</li><li>Teatr PW</li><li>Zespół Domów Studenckich</li><li>Zespół Pieśni i Tańca PW</li></ul></div>
+                    <div class="org-column" style="gap: 20px; background: transparent; box-shadow: none;">
+                        <div style="background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05);"><div class="org-col-title bg-filia">Prorektor ds. Filii</div><ul class="org-list"><li>Politechnika Warszawska Filia w Płocku</li></ul></div>
+                        <div style="background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05);"><div class="org-col-title bg-kanclerz">Kanclerz</div><ul class="org-list"><li>Administracja Budynków Mieszkalnych</li><li>Archiwum PW</li><li>Dział Inwentaryzacji</li><li>Inspektorat Ochrony Przeciwpożarowej</li><li>Straż Akademicka</li></ul><div class="org-sub-title bg-kanclerz-sub">Z-ca Kanclerza ds. Technicznych</div><ul class="org-list"><li>Dział Administracyjno Gospodarczy</li><li>Dział Inwestycji i Remontów</li><li>Dział Techniczny</li></ul></div>
+                        <div style="background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05);"><div class="org-col-title bg-kwestor">Kwestor</div><div class="org-sub-title bg-kwestor-sub">Z-ca Kwestora</div><ul class="org-list"><li>Dział Ewidencji Majątku</li><li>Dział Finansowy</li><li>Dział Księgowości</li><li>Dział Płac</li></ul></div>
+                    </div>
+                </div>
+                <div class="org-faculties"><div class="org-col-title bg-wydzialy">Wydziały Politechniki Warszawskiej</div><div class="faculties-grid"><div class="faculty-item">Wydział Administracji i Nauk Społecznych</div><div class="faculty-item">Wydział Architektury</div><div class="faculty-item">Wydział Budownictwa, Mechaniki i Petrochemii</div><div class="faculty-item">Wydział Chemiczny</div><div class="faculty-item">Wydział Elektroniki i Technik Informacyjnych</div><div class="faculty-item">Wydział Elektryczny</div><div class="faculty-item">Wydział Fizyki</div><div class="faculty-item">Wydział Geodezji i Kartografii</div><div class="faculty-item">Wydział Instalacji Budowlanych, Hydrotechniki i Inż. Środowiska</div><div class="faculty-item">Wydział Inżynierii Chemicznej i Procesowej</div><div class="faculty-item">Wydział Inżynierii Lądowej</div><div class="faculty-item">Wydział Inżynierii Materiałowej</div><div class="faculty-item">Wydział Matematyki i Nauk Informacyjnych</div><div class="faculty-item">Wydział Mechaniczny Energetyki i Lotnictwa</div><div class="faculty-item">Wydział Mechaniczny Technologiczny</div><div class="faculty-item">Wydział Mechatroniki</div><div class="faculty-item">Wydział Samochodów i Maszyn Roboczych</div><div class="faculty-item">Wydział Transportu</div><div class="faculty-item">Wydział Zarządzania</div><div class="faculty-item">Kolegium Nauk Ekonomicznych i Społecznych</div></div></div>
+            </div>
+
+            <div id="view-organizacyjna" class="org-view">
+                <div class="org-grid-3col">
+                    <div class="org-column" style="grid-column: span 2;"><div class="org-col-title bg-rektor">Ogólnouczelniane Jednostki i Administracja (podległe bezpośrednio Rektorowi)</div><ul class="org-list org-list-2col"><li>Biblioteka Główna</li><li>Biuro Komunikacji i Promocji</li><li>Biuro Rektora</li><li>Biuro ds. Społecznej Odpowiedzialności Uczelni</li><li>Centrum Cyberbezpieczeństwa</li><li>Centrum Doskonałości Sztucznej Inteligencji</li><li>HealthTEC</li><li>C-QuaNT</li><li>Centrum Innowacji</li><li>Centrum Obsługi Projektów</li><li>Centrum Projektów Rozwojowych</li><li>Centrum Studiów Zaawansowanych</li><li>Centrum Wiarygodnej Sztucznej Inteligencji</li><li>Centrum Wsparcia Dydaktyki</li><li>Centrum Współpracy Międzynarodowej</li><li>CEZAMAT</li><li>Dział Analiz Strategicznych</li><li>Dział Bezpieczeństwa Informacji PW</li><li>Dział ds. Ochrony Informacji Niejawnych i Spraw Obronnych</li><li>Dział Wsparcia Rozwoju Pracowników</li><li>Inspektorat BHP</li><li>Instytut Problemów Współczesnej Cywilizacji im. Marka Dietricha</li><li>Muzeum PW</li><li>Oficyna Wydawnicza</li><li>Ośrodek Kształcenia na Odległość</li><li>Studium Języków Obcych</li><li>Studium Wychowania Fizycznego i Sportu</li><li>Szkoła Biznesu</li><li>Szkoła Doktorska PW</li><li>Uczelniane Centrum Badawcze Lotnictwa i Kosmonautyki</li><li>Uczelniane Centrum Badawcze Obronności i Bezpieczeństwa</li><li>UTW PW</li><li>Zespół Audytu Wewnętrznego</li><li>Zespół ds. Nauki</li><li>Zespół ds. Systemów Zarządzania Jakością</li></ul></div>
+                    <div class="org-column" style="background: transparent; box-shadow: none; gap: 20px;">
+                        <div style="background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05);"><div class="org-col-title bg-kanclerz">Kanclerz</div><ul class="org-list"><li>Administracja Budynków Mieszkalnych</li><li>Archiwum PW</li><li>Biuro Kanclerza</li><li>Biuro Obsługi Prawnej</li><li>Biuro Spraw Osobowych</li><li>Centrum Informatyzacji PW</li><li>Dział Centralnej Sprawozdawczości</li><li>Dział Ekonomiczny</li><li>Dział Inwentaryzacji</li><li>Dział Logistyki i Zakupów</li><li>Dział Socjalny</li><li>Inspektorat Ochrony Przeciwpożarowej</li><li>Samodzielne Stanowisko ds. Promocji Ośrodków Wypoczynkowych oraz Koliby Studenckiej PW</li><li>Straż Akademicka</li></ul><div class="org-sub-title bg-kanclerz-sub">Z-ca Kanclerza ds. Działalności Podstawowej</div><ul class="org-list"><li>Biuro ds. Przyjęć na Studia</li><li>Biuro Karier</li><li>Chór Akademicki PW</li><li>Dział ds. Studiów</li><li>Orkiestra Rozrywkowa PW</li><li>Teatr PW</li><li>Zespół Domów Studenckich</li><li>Zespół Pieśni i Tańca PW</li></ul><div class="org-sub-title bg-kanclerz-sub">Z-ca Kanclerza ds. Technicznych</div><ul class="org-list"><li>Dział Administracyjno Gospodarczy</li><li>Dział Inwestycji i Remontów</li><li>Dział Techniczny</li></ul></div>
+                        <div style="background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05);"><div class="org-col-title bg-kwestor">Kwestor</div><div class="org-sub-title bg-kwestor-sub">Z-ca Kwestora</div><ul class="org-list"><li>Dział Ewidencji Majątku</li><li>Dział Finansowy</li><li>Dział Księgowości</li><li>Dział Płac</li></ul></div>
+                    </div>
+                </div>
+                <div class="org-faculties"><div class="org-col-title bg-wydzialy">Wydziały (Jednostki Podstawowe)</div><div class="faculties-grid"><div class="faculty-item">Wydział Administracji i Nauk Społecznych</div><div class="faculty-item">Wydział Architektury</div><div class="faculty-item">Wydział Budownictwa, Mechaniki i Petrochemii</div><div class="faculty-item">Wydział Chemiczny</div><div class="faculty-item">Wydział Elektroniki i Technik Informacyjnych</div><div class="faculty-item">Wydział Elektryczny</div><div class="faculty-item">Wydział Fizyki</div><div class="faculty-item">Wydział Geodezji i Kartografii</div><div class="faculty-item">Wydział Instalacji Budowlanych, Hydrotechniki i Inż. Środowiska</div><div class="faculty-item">Wydział Inżynierii Chemicznej i Procesowej</div><div class="faculty-item">Wydział Inżynierii Lądowej</div><div class="faculty-item">Wydział Inżynierii Materiałowej</div><div class="faculty-item">Wydział Matematyki i Nauk Informacyjnych</div><div class="faculty-item">Wydział Mechaniczny Energetyki i Lotnictwa</div><div class="faculty-item">Wydział Mechaniczny Technologiczny</div><div class="faculty-item">Wydział Mechatroniki</div><div class="faculty-item">Wydział Samochodów i Maszyn Roboczych</div><div class="faculty-item">Wydział Transportu</div><div class="faculty-item">Wydział Zarządzania</div><div class="faculty-item">Kolegium Nauk Ekonomicznych i Społecznych</div></div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ZAKŁADKA 3: KODY JEDNOSTEK -->
+    <div id="codes-tab" class="table-tab-wrapper tab-content">
+        <div class="data-container">
+            <div class="org-header-doc">
+                <h2>KODY JEDNOSTEK</h2>
+                <p>Wykaz oficjalnych skrótów i oznaczeń numerycznych</p>
+            </div>
+
+            <div class="org-search-container" style="max-width: 100%;">
+                <input type="text" id="codes-search-input" class="org-search-input" placeholder="Wyszukaj jednostkę, symbol lub kod (np. DTECH, 83190000)...">
+            </div>
+
+            <div class="data-table-wrapper">
+                <table class="data-table">
+                    <thead><tr><th>Typ Jednostki</th><th>Nazwa Jednostki</th><th>Symbol (Skrót)</th><th>Kod Jednostki</th></tr></thead>
+                    <tbody id="codes-table-body"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- ZAKŁADKA 4: KSIĄŻKA TELEFONICZNA -->
+    <div id="phone-tab" class="table-tab-wrapper tab-content">
+        <div class="data-container">
+            <div class="org-header-doc">
+                <h2>KSIĄŻKA TELEFONICZNA PW</h2>
+                <p>Baza kontaktów pracowników uczelni</p>
+            </div>
+            
+            <div style="text-align: center; margin-bottom: 20px;">
+                <div id="phone-load-status" class="data-status-msg">
+                    Trwa automatyczne ładowanie bazy danych...
+                </div>
+            </div>
+
+            <div class="org-search-container" style="max-width: 100%;">
+                <input type="text" id="phone-search-input" class="org-search-input" placeholder="Szukaj po nazwisku, nr telefonu lub e-mailu (np. Olszewska, 234 8610)...">
+            </div>
+
+            <div class="data-table-wrapper">
+                <table class="data-table">
+                    <thead><tr><th>Imię i Nazwisko</th><th>Dział / Lokalizacja</th><th>Telefony</th><th>E-mail</th></tr></thead>
+                    <tbody id="phone-table-body">
+                        <!-- Tabela renderowana przez JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- STOPKA -->
+    <footer id="main-footer">
+        &copy; Artur Kulik
+    </footer>
+
+    <!-- SKRYPTY -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+    <script>
+        // =========================================================
+        // LOGIKA ZAKŁADEK I WIDOKÓW
+        // =========================================================
+        function switchTab(tabId, element) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            element.classList.add('active');
+            if(tabId === 'map-tab' && typeof map !== 'undefined') map.invalidateSize();
+        }
+
+        function switchOrgView(viewId, element) {
+            document.querySelectorAll('.org-view').forEach(view => view.classList.remove('active'));
+            document.querySelectorAll('.org-toggle-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(viewId).classList.add('active');
+            element.classList.add('active');
+        }
+
+        // =========================================================
+        // ZAKŁADKA 4: KSIĄŻKA TELEFONICZNA (JSON FETCH & SEARCH)
+        // =========================================================
+        
+        // Wbudowana baza z pliku jako fallback (aby zapobiec pustej tabeli w trybie podglądu Canvas i w razie braku pliku serwerowego)
+        let phonebookData = [
+            {
+                "id": "u-agnieszka.olszewska",
+                "firstName": "Agnieszka",
+                "lastName": "Olszewska",
+                "position": "Pracownik jednostki",
+                "department": "Wydział Budownictwa, Mechaniki i Petrochemii",
+                "location": "BIP PW",
+                "internalPhone": "",
+                "fullPhone": "",
+                "email": "agnieszka.olszewska@pw.edu.pl"
+            },
+            {
+                "id": "u-monika.lewandowska",
+                "firstName": "Monika",
+                "lastName": "Lewandowska",
+                "position": "Pracownik jednostki",
+                "department": "Biuro ds. Zamówień Publicznych",
+                "location": "BIP PW",
+                "internalPhone": "",
+                "fullPhone": "",
+                "email": "monika.lewandowska@pw.edu.pl"
+            },
+            {
+                "id": "8610",
+                "firstName": "Iwona",
+                "lastName": "Dobrzyńska",
+                "position": "Kierownik Administracyjny Wydziału",
+                "department": "Wydział Zarządzania",
+                "location": "BIP PW",
+                "internalPhone": "8610",
+                "fullPhone": "(22) 234 8610",
+                "email": "iwona.dobrzynska@pw.edu.pl"
+            },
+            {
+                "id": "8358",
+                "firstName": "Dział",
+                "lastName": "Ekonomiczny",
+                "position": "Pracownik jednostki",
+                "department": "Wydział Zarządzania",
+                "location": "BIP PW",
+                "internalPhone": "8358",
+                "fullPhone": "(22) 234 8358",
+                "email": ""
+            }
+        ];
+        
+        const phoneTableBody = document.getElementById('phone-table-body');
+        const phoneStatusDiv = document.getElementById('phone-load-status');
+
+        // Funkcja czyszcząca dane kontaktów (usuwa m.in. 'to main content skip' i powielone puste maile)
+        function cleanPhonebookData(data) {
+            // 1. Usuń rekordy z "to main content skip"
+            let cleaned = data.filter(item => {
+                const fullName = `${item.firstName || ''} ${item.lastName || ''}`.toLowerCase();
+                return !fullName.includes('to main content skip');
+            });
+
+            // 2. Znajdź maile, które mają przypisane poprawne imię i nazwisko w którymkolwiek rekordzie
+            const emailHasName = {};
+            cleaned.forEach(item => {
+                if (item.email) {
+                    const email = item.email.toLowerCase().trim();
+                    const fullName = `${item.firstName || ''} ${item.lastName || ''}`.trim();
+                    if (fullName.length > 0) {
+                        emailHasName[email] = true;
+                    }
+                }
+            });
+
+            // 3. Usuń rekordy bez imienia i nazwiska, jeśli ten sam e-mail występuje u osoby z imieniem,
+            //    lub usuń duplikaty e-maili, jeśli oba rekordy nie mają imienia.
+            const seenEmptyEmails = new Set();
+            cleaned = cleaned.filter(item => {
+                if (item.email) {
+                    const email = item.email.toLowerCase().trim();
+                    const fullName = `${item.firstName || ''} ${item.lastName || ''}`.trim();
+                    
+                    if (fullName.length === 0) {
+                        // Jeśli inny rekord z tym mailem ma nazwę, pozbywamy się tego pustego "śmiecia"
+                        if (emailHasName[email]) return false;
+                        
+                        // Jeśli żaden rekord z tym mailem nie ma nazwy, zostawiamy tylko pierwszy taki przypadek
+                        if (seenEmptyEmails.has(email)) return false;
+                        
+                        seenEmptyEmails.add(email);
+                    }
+                }
+                return true;
+            });
+
+            return cleaned;
+        }
+
+        // Automatyczne pobieranie pliku z serwera, z bezpiecznym sprawdzeniem środowiska
+        async function fetchLocalJSON() {
+            try {
+                // Zabezpieczenie przed błędem Failed to parse URL wewnątrz podglądu Canvas (blob/data) i lokalnego dysku
+                if (window.location.href.startsWith('blob:') || window.location.href.startsWith('data:') || window.location.protocol === 'file:') {
+                    phonebookData = cleanPhonebookData(phonebookData);
+                    renderPhoneTable(phonebookData);
+                    phoneStatusDiv.textContent = "Środowisko testowe offline. Wczytano dane wbudowane. Uruchom projekt na serwerze (np. GitHub Pages), aby załadować pełną bazę.";
+                    phoneStatusDiv.style.color = "#e67e22";
+                    return; // Przerywa próbę fetch
+                }
+
+                const response = await fetch('data_index_partial_optimized.json?t=' + new Date().getTime());
+                if (response.ok) {
+                    const rawData = await response.json();
+                    phonebookData = cleanPhonebookData(rawData);
+                    renderPhoneTable(phonebookData);
+                    phoneStatusDiv.textContent = `Pomyślnie załadowano i wyczyszczono ${phonebookData.length} kontaktów z bazy.`;
+                    phoneStatusDiv.style.color = "var(--pw-ds)";
+                } else {
+                    throw new Error('Brak pliku na serwerze');
+                }
+            } catch (error) {
+                phonebookData = cleanPhonebookData(phonebookData);
+                renderPhoneTable(phonebookData);
+                phoneStatusDiv.textContent = "Błąd: Brak pliku 'data_index_partial_optimized.json' na serwerze obok pliku index.html.";
+                phoneStatusDiv.classList.add('data-status-error');
+            }
+        }
+        
+        // Renderowanie tabeli kontaktów
+        function renderPhoneTable(data) {
+            phoneTableBody.innerHTML = '';
+            
+            // Limit renderowania do np. pierwszych 100 wyników na raz, by nie zamulać przeglądarki jeśli baza jest wielka
+            const limit = Math.min(data.length, 100); 
+
+            for(let i = 0; i < limit; i++) {
+                const item = data[i];
+                const tr = document.createElement('tr');
+                
+                // Łączenie imienia, nazwiska i stanowiska
+                const imieNazwisko = `${item.firstName || ''} ${item.lastName || ''}`.trim();
+                const stanowisko = item.position ? `<br><span style="font-size:0.8rem; color:#666; font-weight:normal;">${item.position}</span>` : '';
+                
+                // Łączenie działu i lokalizacji
+                const dzial = item.department || '-';
+                const lokalizacja = item.location ? ` (${item.location})` : '';
+                
+                // Składanie telefonów z pliku JSON
+                let telefonyArr = [];
+                if(item.fullPhone) telefonyArr.push(`<a href="tel:${item.fullPhone.replace(/\D/g, '')}" class="phone-link">${item.fullPhone}</a>`);
+                if(item.internalPhone) telefonyArr.push(`Wewn: <span style="font-weight:bold;">${item.internalPhone}</span>`);
+                const telefonyHtml = telefonyArr.length > 0 ? telefonyArr.join('<br>') : '-';
+
+                const emailHtml = item.email ? `<a href="mailto:${item.email}" class="email-link">${item.email}</a>` : '-';
+
+                tr.innerHTML = `
+                    <td style="font-weight: 700; color: #222;">${imieNazwisko || '-'}${stanowisko}</td>
+                    <td style="color: #444; font-size: 0.85rem;"><strong>${dzial}</strong>${lokalizacja}</td>
+                    <td>${telefonyHtml}</td>
+                    <td>${emailHtml}</td>
+                `;
+                phoneTableBody.appendChild(tr);
+            }
+
+            if(data.length === 0) {
+                phoneTableBody.innerHTML = '<tr><td colspan="4" style="text-align:center; padding: 20px; color:#999;">Brak wyników wyszukiwania.</td></tr>';
+            } else if (data.length > limit) {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `<td colspan="4" style="text-align:center; padding: 15px; color:#888; font-size:0.85rem; font-weight: 600;">Wyświetlam ${limit} z ${data.length} znalezionych rekordów. Wpisz więcej znaków, aby zawęzić wyniki...</td>`;
+                phoneTableBody.appendChild(tr);
+            }
+        }
+
+        // Pomocnicza funkcja do usuwania polskich znaków (diakrytyków)
+        function removeDiacritics(str) {
+            if (!str) return "";
+            return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/ł/g, "l").replace(/Ł/g, "L");
+        }
+
+        // Wyszukiwarka kontaktów - ZAAWANSOWANA (ignoruje spacje, polskie znaki i kolejność słów)
+        document.getElementById('phone-search-input').addEventListener('input', function(e) {
+            const rawSearchTerm = e.target.value.toLowerCase().trim();
+            const searchTerms = removeDiacritics(rawSearchTerm).split(/\s+/).filter(t => t.length > 0);
+            const searchDigitsOnly = rawSearchTerm.replace(/\D/g, ''); // wyciąga tylko same cyfry
+
+            const filteredData = phonebookData.filter(item => {
+                // 1. Sprawdzenie tekstowe (imię, nazwisko, dział, email, stanowisko)
+                // Sklejamy wszystko w jeden string i usuwamy polskie znaki dla ułatwienia
+                const recordText = removeDiacritics(`${item.firstName || ''} ${item.lastName || ''} ${item.department || ''} ${item.email || ''} ${item.position || ''} ${item.location || ''}`).toLowerCase();
+
+                // Sprawdzamy czy KAŻDE słowo wpisane w wyszukiwarkę znajduje się gdzieś w tym rekordzie
+                let textMatch = true;
+                if (searchTerms.length > 0) {
+                    textMatch = searchTerms.every(term => recordText.includes(term));
+                }
+
+                // 2. Logika dla telefonów (jeśli wpisano cyfry, ignorujemy myślniki/nawiasy w bazie)
+                let phoneMatch = false;
+                if (searchDigitsOnly.length > 0) {
+                    const fullClean = (item.fullPhone || '').replace(/\D/g, '');
+                    const intClean = (item.internalPhone || '').replace(/\D/g, '');
+                    phoneMatch = fullClean.includes(searchDigitsOnly) || intClean.includes(searchDigitsOnly);
+                }
+
+                if (rawSearchTerm === "") return true; // jak puste pole, to pokazuj wszystko
+
+                return textMatch || phoneMatch;
+            });
+            renderPhoneTable(filteredData);
+        });
+
+        // Uruchomienie próby pobrania pliku z serwera na starcie aplikacji
+        fetchLocalJSON();
+
+
+        // =========================================================
+        // ZAKŁADKA 3: KODY JEDNOSTEK
+        // =========================================================
+        let unitCodesData = [];
+
+        const codesTableBody = document.getElementById('codes-table-body');
+        function renderCodesTable(data) {
+            codesTableBody.innerHTML = '';
+            data.forEach(item => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `<td><span style="color: var(--pw-blue); font-weight: 600; font-size: 0.8rem; text-transform: uppercase;">${item.type || 'JEDNOSTKA'}</span></td><td style="font-weight: 600; color: #333;">${item.name}</td><td><span class="code-symbol">${item.symbol || '-'}</span></td><td class="code-number">${item.code}</td>`;
+                codesTableBody.appendChild(tr);
+            });
+        }
+        
+        async function fetchUnitCodes() {
+            try {
+                if (window.location.protocol === 'file:') {
+                    console.warn("Uruchomiono lokalnie (file://). Pobieranie JSON może nie zadziałać.");
+                    return;
+                }
+                const response = await fetch('kody_jednostek.json?t=' + new Date().getTime());
+                if (response.ok) {
+                    unitCodesData = await response.json();
+                    renderCodesTable(unitCodesData);
+                } else {
+                    console.error('Błąd pobierania danych kodów jednostek z serwera.');
+                }
+            } catch (error) {
+                console.error('Błąd komunikacji przy pobieraniu kodów jednostek:', error);
+            }
+        }
+        
+        fetchUnitCodes();
+
+        document.getElementById('codes-search-input').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase().trim();
+            const filteredData = unitCodesData.filter(item => item.name.toLowerCase().includes(searchTerm) || item.symbol.toLowerCase().includes(searchTerm) || item.code.toLowerCase().includes(searchTerm) || item.type.toLowerCase().includes(searchTerm));
+            renderCodesTable(filteredData);
+        });
+
+        // =========================================================
+        // LOGIKA MAPY
+        // =========================================================
+        let pwMapData = [];
+
+        const map = L.map('map', { center: [52.2205, 21.0105], zoom: 15, zoomControl: false });
+        L.control.zoom({ position: 'bottomright' }).addTo(map);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap', maxZoom: 19 }).addTo(map);
+
+        const mapLayers = { 'wydział': L.layerGroup().addTo(map), 'administracja': L.layerGroup().addTo(map), 'akademik': L.layerGroup().addTo(map), 'budynek PW': L.layerGroup().addTo(map) };
+        const mapColors = { 'wydział': '#00458d', 'administracja': '#e67e22', 'akademik': '#27ae60', 'budynek PW': '#8e44ad' };
+        
+        const mapObjectsList = [];
+        const listContainer = document.getElementById('object-list');
+
+        async function fetchMapData() {
+            try {
+                if (window.location.protocol === 'file:') {
+                    console.warn("Uruchomiono lokalnie (file://). Pobieranie JSON może nie zadziałać. Uruchom przez serwer lokalny.");
+                }
+                
+                // Cache buster - wymusza pobranie najnowszej wersji pliku z serwera
+                const response = await fetch('mapa_obiektow.json?t=' + new Date().getTime());
+                if (response.ok) {
+                    pwMapData = await response.json();
+                    
+                    // Czyszczenie poprzednich znaczników (przydatne przy kliknięciu "Odśwież Mapę")
+                    Object.values(mapLayers).forEach(layerGroup => layerGroup.clearLayers());
+                    listContainer.innerHTML = '';
+                    mapObjectsList.length = 0; // Czyszczenie lokalnej tablicy
+
+                    initMapMarkers();
+                    applyMapFilters(); // Ponowne nałożenie ew. zaznaczonych checkboxów
+                } else {
+                    console.error('Błąd pobierania danych mapy z serwera.');
+                }
+            } catch (error) {
+                console.error('Błąd pobierania danych mapy:', error);
+            }
+        }
+
+        function initMapMarkers() {
+            pwMapData.forEach(item => {
+                const markerColor = mapColors[item.category] || '#7f8c8d';
+                const displayName = item.shortName ? `${item.name} (${item.shortName})` : item.name;
+                const hasCoords = item.coords[0] !== "" && item.coords[1] !== "";
+                let layer = null;
+
+                if (hasCoords) {
+                    layer = L.circleMarker(item.coords, { radius: 12, fillColor: markerColor, color: "#ffffff", weight: 2, fillOpacity: 1 });
+                    layer.bindTooltip(item.shortName || item.name, { permanent: true, direction: 'right', offset: [10, 0], className: 'classic-tooltip' });
+                    layer.bindPopup(`<div class="popup-info"><strong style="color:${markerColor}; text-transform:uppercase; font-size:10px;">${item.category}</strong><h3 style="margin-top:2px; font-size: 1.05rem;">${displayName}</h3><div class="popup-desc">${item.desc}</div><p style="color:#666; font-size:0.8rem;"><strong>Adres:</strong> ${item.address}</p></div>`);
+                    layer.addTo(mapLayers[item.category]);
+                }
+
+                const itemEl = document.createElement('div');
+                itemEl.className = 'object-item';
+                if (!hasCoords) itemEl.style.opacity = "0.7";
+                itemEl.innerHTML = `<h4>${displayName} ${!hasCoords ? '⚠️' : ''}</h4><p>${item.address || 'Brak adresu'}</p><span class="tag" style="background: ${markerColor}">${item.category}</span>`;
+                if (hasCoords) itemEl.onclick = () => { map.setView(item.coords, 18); layer.openPopup(); };
+                
+                listContainer.appendChild(itemEl);
+                mapObjectsList.push({ item, marker: layer, listItem: itemEl, categoryId: item.category, hasCoords });
+            });
+        }
+        
+        fetchMapData();
+
+        function applyMapFilters() {
+            const searchTerm = document.getElementById('search-input').value.toLowerCase();
+            const activeCategories = Array.from(document.querySelectorAll('.filter-check:checked')).map(cb => cb.value);
+
+            mapObjectsList.forEach(obj => {
+                const searchString = `${obj.item.name} ${obj.item.shortName || ''} ${obj.item.address || ''}`.toLowerCase();
+                const textMatch = searchString.includes(searchTerm);
+                const catMatch = activeCategories.includes(obj.categoryId);
+
+                if (textMatch && catMatch) {
+                    obj.listItem.style.display = '';
+                    if (obj.hasCoords && !mapLayers[obj.categoryId].hasLayer(obj.marker)) mapLayers[obj.categoryId].addLayer(obj.marker);
+                } else {
+                    obj.listItem.style.display = 'none';
+                    if (obj.hasCoords && mapLayers[obj.categoryId].hasLayer(obj.marker)) mapLayers[obj.categoryId].removeLayer(obj.marker);
+                }
+            });
+        }
+
+        document.getElementById('search-input').addEventListener('input', applyMapFilters);
+        document.querySelectorAll('.filter-check').forEach(cb => cb.addEventListener('change', applyMapFilters));
+
+        function resetMapView() {
+            const allVisibleMarkers = [];
+            Object.keys(mapLayers).forEach(group => { if (map.hasLayer(mapLayers[group])) mapLayers[group].eachLayer(l => allVisibleMarkers.push(l)); });
+            if (allVisibleMarkers.length > 0) map.fitBounds(L.featureGroup(allVisibleMarkers).getBounds(), { padding: [50, 50] });
+            else map.setView([52.2205, 21.0105], 15);
+        }
+
+        document.getElementById('org-search-input').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase().trim();
+            const allItems = document.querySelectorAll('.org-list li, .faculty-item');
+
+            allItems.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                if (searchTerm === '') { item.style.display = ''; item.classList.remove('org-highlight'); }
+                else if (text.includes(searchTerm)) { item.style.display = ''; item.classList.add('org-highlight'); }
+                else { item.style.display = 'none'; item.classList.remove('org-highlight'); }
+            });
+
+            document.querySelectorAll('.org-column, .org-column > div[style*="background: white"], .org-faculties').forEach(block => {
+                if (searchTerm === '') { block.style.display = ''; return; }
+                if (block.classList.contains('org-column') && block.style.background === 'transparent') { block.style.display = ''; return; }
+                const hasVisibleItems = Array.from(block.querySelectorAll('li, .faculty-item')).some(el => el.style.display !== 'none');
+                block.style.display = (!hasVisibleItems && block.querySelectorAll('li, .faculty-item').length > 0) ? 'none' : '';
+            });
+
+            document.querySelectorAll('.org-sub-title').forEach(subTitle => {
+                if (searchTerm === '') { subTitle.style.display = ''; return; }
+                const nextList = subTitle.nextElementSibling;
+                if (nextList && nextList.classList.contains('org-list')) {
+                    subTitle.style.display = Array.from(nextList.querySelectorAll('li')).some(li => li.style.display !== 'none') ? '' : 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

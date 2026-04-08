@@ -1,0 +1,2300 @@
+[
+    {
+        "type": "Jednostka",
+        "name": "1872",
+        "symbol": "",
+        "code": "18720000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "4320",
+        "symbol": "",
+        "code": "43200000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "4480",
+        "symbol": "",
+        "code": "44800000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "6510",
+        "symbol": "",
+        "code": "65100000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "8273",
+        "symbol": "",
+        "code": "82730000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "8290",
+        "symbol": "",
+        "code": "82900000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "8337",
+        "symbol": "",
+        "code": "83370000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Administracja Budynków Mieszka",
+        "symbol": "ABM",
+        "code": "80420000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Administracja Budynków Mieszka",
+        "symbol": "ABM",
+        "code": "83420000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Administracja Budynków Mieszkalnych",
+        "symbol": "ABM",
+        "code": "80420000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Administracja Filii w Płocku",
+        "symbol": "AFP",
+        "code": "78540000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Administracja Rejonu 10",
+        "symbol": "DAGR10",
+        "code": "83331800"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Administracja Rejonu 3",
+        "symbol": "DAGR3",
+        "code": "83330300"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Administracja Rejonu 4",
+        "symbol": "DAGR4",
+        "code": "83330400"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Administracja Rejonu 5",
+        "symbol": "DAGR5",
+        "code": "83331200"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Administracja Rejonu 6",
+        "symbol": "DAGR6",
+        "code": "83331300"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Administracja Rejonu 7",
+        "symbol": "DAGR7",
+        "code": "83331400"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Administracja Rejonu 8",
+        "symbol": "DAGR8",
+        "code": "83331500"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Administracja Rejonu 9",
+        "symbol": "DAGR9",
+        "code": "83331600"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Akademickie Centrum Kultury",
+        "symbol": "ACK",
+        "code": "78580000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Archiwum Politechniki Warszawskiej",
+        "symbol": "ARCHPW",
+        "code": "80480000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "BP \"Program Rozwojowy PW\"",
+        "symbol": "BRP",
+        "code": "84840000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Biblioteka (MEiL)",
+        "symbol": "MELBIB",
+        "code": "11300030"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Biblioteka (WF)",
+        "symbol": "FIZBIB",
+        "code": "10500060"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Biblioteka (WSiMR)",
+        "symbol": "BSIMR",
+        "code": "11500030"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Biblioteka Główna",
+        "symbol": "BG",
+        "code": "43100000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Biblioteka Wydziału Mechatroniki",
+        "symbol": "MchtrBIB",
+        "code": "11400030"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Biuro Administracyjne (WE)",
+        "symbol": "ENWAAD",
+        "code": "10300014"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Biuro Administracyjne (WSiMR)",
+        "symbol": "BASIMR",
+        "code": "11500160"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Biuro Analiz i Sprawozdawczości",
+        "symbol": "BAiSSiMR",
+        "code": "11500130"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Biuro Dziekana (MEiL)",
+        "symbol": "MELBDZ",
+        "code": "11300010"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Biuro Dziekana (WIM)",
+        "symbol": "BDWIM",
+        "code": "10900010"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Biuro Dziekana (WMchtr)",
+        "symbol": "BDMchtr",
+        "code": "11400050"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Biuro Dziekana (WSiMR)",
+        "symbol": "BDSIMR",
+        "code": "11500040"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Biuro Finansowe (WSiMR)",
+        "symbol": "BFSIMR",
+        "code": "11500070"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Biuro Funduszy Strukturalnych",
+        "symbol": "BFS",
+        "code": "84230000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Biuro Kanclerza",
+        "symbol": "BK",
+        "code": "80070000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Biuro Karier",
+        "symbol": "BK",
+        "code": "82070000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Biuro Komunikacji i Promocji",
+        "symbol": "BKP",
+        "code": "18210000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Biuro Obsługi Informatycznej (WE)",
+        "symbol": "ENWAOI",
+        "code": "10300050"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Biuro Obsługi Informatycznej (WSiMR)",
+        "symbol": "BOISIMR",
+        "code": "11500060"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Biuro Obsługi Prawnej",
+        "symbol": "BOP",
+        "code": "80020000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Biuro Obsługi Projektów (WSiMR)",
+        "symbol": "BOPSIMR",
+        "code": "11500080"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Biuro Projektu ENHANCE",
+        "symbol": "",
+        "code": "23401300"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Biuro Projektu IDUB",
+        "symbol": "BPI",
+        "code": "18200000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Biuro Projektu Inicjatywa Doskonałości Uczelnia Badawcza",
+        "symbol": "",
+        "code": "23401200"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Biuro Promocji i Informacji",
+        "symbol": "BPI",
+        "code": "82130000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Biuro Prorektora",
+        "symbol": "BP",
+        "code": "78010000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Biuro Rektora",
+        "symbol": "BR",
+        "code": "18010000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Biuro Rektora",
+        "symbol": "BR",
+        "code": "80010000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Biuro Spraw Osobowych",
+        "symbol": "BSO",
+        "code": "80030000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Biuro Spraw Studenckich",
+        "symbol": "BSS",
+        "code": "82160000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Biuro Spraw Studenckich (WSiMR)",
+        "symbol": "BSSTSIMR",
+        "code": "11500120"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Biuro Studentów Międzynarodowych",
+        "symbol": "ISO",
+        "code": "43400300"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Biuro Studiów Niestacjonarnych (WSiMR)",
+        "symbol": "BSNSIMR",
+        "code": "11500110"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Biuro Studiów Stacjonarnych (WSiMR)",
+        "symbol": "BSSSIMR",
+        "code": "11500100"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Biuro Wyjazdów Zagranicznych",
+        "symbol": "BWZ",
+        "code": "43400200"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Biuro ds. Planowania, Analiz i Rozliczeń Procesu Dydaktycznego (WSiMR)",
+        "symbol": "BPDSIMR",
+        "code": "11500090"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Biuro ds. Projektu Cezamat",
+        "symbol": "BPC",
+        "code": "18780000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Biuro ds. Przyjęć na Studia",
+        "symbol": "BPS",
+        "code": "82180000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Biuro ds. Rozwoju",
+        "symbol": "BR",
+        "code": "84860000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Biuro ds. Zamówień Publicznych",
+        "symbol": "BZP",
+        "code": "78120000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Biuro ds. społ odpow Uczelni",
+        "symbol": "BSOU",
+        "code": "18220000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Biuro ds.Przyjęć na Studia2019",
+        "symbol": "BPS",
+        "code": "18190000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "CEZAMAT",
+        "symbol": "C",
+        "code": "80930000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Cent Innowacji",
+        "symbol": "CI",
+        "code": "23500000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Cent Proj Rozwoj",
+        "symbol": "CPR",
+        "code": "23400000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Centr Model OP",
+        "symbol": "CMO",
+        "code": "11710000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Centr Obsł Proj",
+        "symbol": "COP",
+        "code": "45200000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Centralny Ośrodek Informatyki",
+        "symbol": "COI",
+        "code": "43300000"
+    },
+    {
+        "type": "Centrum",
+        "name": "Centrum CEZAMAT",
+        "symbol": "CC",
+        "code": "25300000"
+    },
+    {
+        "type": "Centrum",
+        "name": "Centrum CEZAMAT_31122020",
+        "symbol": "CC",
+        "code": "45300000"
+    },
+    {
+        "type": "Centrum",
+        "name": "Centrum Cyberbezpieczeństwa",
+        "symbol": "CC",
+        "code": "23600000"
+    },
+    {
+        "type": "Centrum",
+        "name": "Centrum Doskonałości HealthTEC",
+        "symbol": "CDHTEC",
+        "code": "44100000"
+    },
+    {
+        "type": "Centrum",
+        "name": "Centrum Doskonałości Sztucznej Inteligencji",
+        "symbol": "CDSI",
+        "code": "44000000"
+    },
+    {
+        "type": "Centrum",
+        "name": "Centrum Doskonałości Technologii Kwantowych i Jądrowych „C-QuaNT”",
+        "symbol": "CQuaNT",
+        "code": "43200000"
+    },
+    {
+        "type": "Centrum",
+        "name": "Centrum Informatyzacji PW",
+        "symbol": "CIP",
+        "code": "23200000"
+    },
+    {
+        "type": "Centrum",
+        "name": "Centrum Projektów Rozwojowych",
+        "symbol": "",
+        "code": "23400000"
+    },
+    {
+        "type": "Centrum",
+        "name": "Centrum Studiów Zaawansowanych",
+        "symbol": "CSZ",
+        "code": "63500000"
+    },
+    {
+        "type": "Centrum",
+        "name": "Centrum Transf.Techn.i Rozw. P",
+        "symbol": "CTTRP",
+        "code": "44500000"
+    },
+    {
+        "type": "Centrum",
+        "name": "Centrum Wiarygodnej Sztucznej Inteligencji",
+        "symbol": "CWSI",
+        "code": "43500000"
+    },
+    {
+        "type": "Centrum",
+        "name": "Centrum Współpr.Między31122019",
+        "symbol": "CWM",
+        "code": "43700000"
+    },
+    {
+        "type": "Centrum",
+        "name": "Centrum Współpr.Międzynarod.",
+        "symbol": "CWM",
+        "code": "64500000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Chór Akademicki PW",
+        "symbol": "CAP",
+        "code": "82680000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "DES - Sekretariat Szkoły",
+        "symbol": "DSS",
+        "code": "82150000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Dom Stud.\"Bratniak-Muszelka\"",
+        "symbol": "DSM",
+        "code": "82260000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Dom Stud.\"Pineska-Tulipan\"",
+        "symbol": "DST",
+        "code": "82270000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Dom Stud.\"Wcześniak\" w Płocku",
+        "symbol": "DSP",
+        "code": "78560000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Dom Studencki \"Akademik\"",
+        "symbol": "DS",
+        "code": "82250000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Dom Studencki \"Babilon\"",
+        "symbol": "DS",
+        "code": "82280000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Dom Studencki \"Jachowicza\"",
+        "symbol": "DS",
+        "code": "78130000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Dom Studencki \"Mikrus\"",
+        "symbol": "DS",
+        "code": "82310000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Dom Studencki \"Riviera\"",
+        "symbol": "DS",
+        "code": "82300000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Dom Studencki \"Sezam\"",
+        "symbol": "DS",
+        "code": "82720000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Dom Studencki \"Tatrzańska\"",
+        "symbol": "DS",
+        "code": "82380000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Dom Studencki \"Ustronie\"",
+        "symbol": "DS",
+        "code": "82320000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Dom Studencki \"Żaczek\"",
+        "symbol": "DS",
+        "code": "82290000"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dz. Analiz Strat",
+        "symbol": "DAS",
+        "code": "18020000"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dz.Bezp.Inf.PW",
+        "symbol": "DBIP",
+        "code": "18890000"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Administr.-Gospodarczy",
+        "symbol": "DAG",
+        "code": "83330000"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Administracyjno-Finansowy (WMchtr)",
+        "symbol": "DAFMchtr",
+        "code": "11400020"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Administracyjno-Gospodarczy (WF)",
+        "symbol": "ADDAG",
+        "code": "10500070"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Administracyjno-Gospodarczy (WIL)",
+        "symbol": "DAGIL",
+        "code": "10800030"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Administracyjno-Gospodarczy (WSiMR)",
+        "symbol": "ADSIMR",
+        "code": "11500020"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Administracyjno-Techniczny (WAiNS)",
+        "symbol": "DATAiNS",
+        "code": "11800050"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Administracyjno-Techniczny (WSiMR)",
+        "symbol": "DATIPiMR",
+        "code": "11550010"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Administracyjny (WCh)",
+        "symbol": "DZACH",
+        "code": "10200020"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Administracyjny (WMchtr)",
+        "symbol": "DAMchtr",
+        "code": "11400070"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Analiz Strategicznych",
+        "symbol": "DAS",
+        "code": "18020000"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Centera",
+        "symbol": "Centera",
+        "code": "25301200"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Centralnej Sprawozdawcz",
+        "symbol": "DCS",
+        "code": "80210000"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Centralnej Sprawozdawczości",
+        "symbol": "DCS",
+        "code": "80210000"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Ekonomiczno-Finansowy (WCh)",
+        "symbol": "DEFCH",
+        "code": "10200030"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Ekonomiczno-Finansowy (WF)",
+        "symbol": "ADEFIN",
+        "code": "10500020"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Ekonomiczno-Finansowy WIP",
+        "symbol": "DEFWIP",
+        "code": "11000060"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Ekonomiczny",
+        "symbol": "DE",
+        "code": "80050000"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Ekonomiczny (WIM)",
+        "symbol": "DEWIM",
+        "code": "10900020"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Ewidencji Majątku",
+        "symbol": "DEM",
+        "code": "18130000"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Ewidencji Majątku_311219",
+        "symbol": "DEM",
+        "code": "81790000"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Finansowo-Księgowy (WIL)",
+        "symbol": "DFKIL",
+        "code": "10800040"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Finansowy",
+        "symbol": "DF",
+        "code": "18140000"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Finansowy",
+        "symbol": "DF",
+        "code": "81800000"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Finansowy (WAiNS)",
+        "symbol": "DFAiNS",
+        "code": "11800040"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Finansowy (WMchtr)",
+        "symbol": "DFMchtr",
+        "code": "11400060"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Finansowy CEZAMAT",
+        "symbol": "DFin",
+        "code": "25301100"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Gospodarczo-Techniczny",
+        "symbol": "DGT",
+        "code": "78020000"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Gospodarczy (WE)",
+        "symbol": "ENWADG",
+        "code": "10300070"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Gospodarczy (WIM)",
+        "symbol": "DGWIM",
+        "code": "10900060"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Inwentaryzacji",
+        "symbol": "DI",
+        "code": "80370000"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Inwestycji i Remontów",
+        "symbol": "DIR",
+        "code": "83470000"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Koordynacji Projektów",
+        "symbol": "",
+        "code": "23401100"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Księgowości",
+        "symbol": "DK",
+        "code": "18150000"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Księgowości_311219",
+        "symbol": "DK",
+        "code": "81810000"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Logistyki i Zakupów",
+        "symbol": "DLiZ",
+        "code": "80470000"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Marketingu i Partnerstw Technologicznych",
+        "symbol": "DMiPT",
+        "code": "25301300"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Nadzoru Inwestorskiego",
+        "symbol": "DNI",
+        "code": "83440000"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Obsługi Doktorantów",
+        "symbol": "DOD",
+        "code": "80940000"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Obsługi Gmachu (WF)",
+        "symbol": "ADMDOG",
+        "code": "10500030"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Obsługi Projektów (WIM)",
+        "symbol": "DOPWIM",
+        "code": "10900040"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Organizacyjny",
+        "symbol": "",
+        "code": "23400300"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Promocji (WIM)",
+        "symbol": "DPWIM",
+        "code": "10900090"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Przyg.Inw.i Rem.",
+        "symbol": "DPIR",
+        "code": "83430000"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Płac",
+        "symbol": "DP",
+        "code": "18160000"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Płac_311219",
+        "symbol": "DP",
+        "code": "81820000"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Socjalny PW",
+        "symbol": "DSP",
+        "code": "80040000"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Spraw Obronnych",
+        "symbol": "DSO",
+        "code": "80080000"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Spraw Osobowych",
+        "symbol": "DSO",
+        "code": "78030000"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Techniczny CEZAMAT",
+        "symbol": "dt",
+        "code": "25300500"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Techniczny Uczelni",
+        "symbol": "DTECH",
+        "code": "83190000"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Technik Inform.i Multim.",
+        "symbol": "DTIM",
+        "code": "78040000"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Zakupów (WIM)",
+        "symbol": "DZWIM",
+        "code": "10900080"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Zamówień Publicznych",
+        "symbol": "DZP",
+        "code": "80090000"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Zamówień Publicznych",
+        "symbol": "DZP",
+        "code": "82090000"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Zamówień Publicznych",
+        "symbol": "DZP",
+        "code": "84090000"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Zamówień Publicznych (WA)",
+        "symbol": "DZPWA",
+        "code": "10100092"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Zamówień Publicznych (WIL)",
+        "symbol": "DZPIL",
+        "code": "10800050"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Zamówień Publicznych (WIM)",
+        "symbol": "DZPWIM",
+        "code": "10900070"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Zamówień Publicznych (WMchtr)",
+        "symbol": "DZPMchtr",
+        "code": "11400080"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział Zarządzania Projektami i Systemami Informatycznymi (WIL)",
+        "symbol": "DZPiSIIL",
+        "code": "10800071"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział ds. Cyberbezpieczeństwa",
+        "symbol": "DC",
+        "code": "80220000"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział ds. Obsługi Projektów (WF)",
+        "symbol": "ADDOP",
+        "code": "10500080"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział ds. Studiów",
+        "symbol": "DS",
+        "code": "82170000"
+    },
+    {
+        "type": "Administracja",
+        "name": "Dział ds. Szkoleń",
+        "symbol": "DS",
+        "code": "80770000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Dziekanat (MEiL)",
+        "symbol": "MELDZK",
+        "code": "11300020"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Dziekanat (WAiNS)",
+        "symbol": "DZAiNS",
+        "code": "11800010"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Dziekanat (WCh)",
+        "symbol": "DZCH",
+        "code": "10200050"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Dziekanat (WF)",
+        "symbol": "ADDZIE",
+        "code": "10500010"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Dziekanat (WIL)",
+        "symbol": "DZIL",
+        "code": "10800060"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Dziekanat (WIM)",
+        "symbol": "DWIM",
+        "code": "10900050"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Dziekanat (WMchtr)",
+        "symbol": "DZMchtr",
+        "code": "11400010"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Filia Biblioteki Głównej Biblioteka Terenu Południowego",
+        "symbol": "TPFBG",
+        "code": "43101100"
+    },
+    {
+        "type": "Jednostka",
+        "name": "In Prob Wsp Cyw",
+        "symbol": "IPWC",
+        "code": "14100000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Ins.Elekt.Teor.i Sys.Inf.-Pom",
+        "symbol": "IETSIP",
+        "code": "10420000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Inspektorat BiHP",
+        "symbol": "IB",
+        "code": "18340000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Inspektorat Ochrony Przeciwpoż",
+        "symbol": "IOP",
+        "code": "80350000"
+    },
+    {
+        "type": "Instytut",
+        "name": "Inst.Maszyn Roboczych Ciężkich",
+        "symbol": "IMRC",
+        "code": "11510000"
+    },
+    {
+        "type": "Instytut",
+        "name": "Inst.Metrol.i Inżyn..Biomed.",
+        "symbol": "IMIB",
+        "code": "11420000"
+    },
+    {
+        "type": "Instytut",
+        "name": "Inst.Mikroelektr.i Optoelek.",
+        "symbol": "IMO",
+        "code": "10350000"
+    },
+    {
+        "type": "Instytut",
+        "name": "Inst.Mikromechaniki i Fotoniki",
+        "symbol": "IMF",
+        "code": "11430000"
+    },
+    {
+        "type": "Instytut",
+        "name": "Inst.Sterow.i Elektr.Przem.",
+        "symbol": "ISEP",
+        "code": "10440000"
+    },
+    {
+        "type": "Instytut",
+        "name": "Inst.Techn.Lotn.i Mech.Stos.",
+        "symbol": "ITLMS",
+        "code": "11320000"
+    },
+    {
+        "type": "Instytut",
+        "name": "Instytut Autom.i Inform.Stos.",
+        "symbol": "IAIS",
+        "code": "10310000"
+    },
+    {
+        "type": "Instytut",
+        "name": "Instytut Automatyki i Robotyki",
+        "symbol": "IAR",
+        "code": "11410000"
+    },
+    {
+        "type": "Instytut",
+        "name": "Instytut Biotechnologii",
+        "symbol": "IB",
+        "code": "10220000"
+    },
+    {
+        "type": "Instytut",
+        "name": "Instytut Budownictwa",
+        "symbol": "IB",
+        "code": "71910000"
+    },
+    {
+        "type": "Instytut",
+        "name": "Instytut Chemii",
+        "symbol": "IC",
+        "code": "71920000"
+    },
+    {
+        "type": "Instytut",
+        "name": "Instytut Dróg i Mostów",
+        "symbol": "IDM",
+        "code": "10810000"
+    },
+    {
+        "type": "Instytut",
+        "name": "Instytut Elektroenergetyki",
+        "symbol": "IE",
+        "code": "10410000"
+    },
+    {
+        "type": "Instytut",
+        "name": "Instytut Informatyki",
+        "symbol": "II",
+        "code": "10320000"
+    },
+    {
+        "type": "Instytut",
+        "name": "Instytut Inżyn.Mechanicznej",
+        "symbol": "IIM",
+        "code": "71930000"
+    },
+    {
+        "type": "Instytut",
+        "name": "Instytut Inżynierii Budowlanej",
+        "symbol": "IIB",
+        "code": "10880000"
+    },
+    {
+        "type": "Instytut",
+        "name": "Instytut Konfucjusz do20.11.19",
+        "symbol": "IKD",
+        "code": "80110000"
+    },
+    {
+        "type": "Instytut",
+        "name": "Instytut Konfucjusza",
+        "symbol": "IK",
+        "code": "73100000"
+    },
+    {
+        "type": "Instytut",
+        "name": "Instytut Konfucjusza_do3112202",
+        "symbol": "IK",
+        "code": "63100000"
+    },
+    {
+        "type": "Instytut",
+        "name": "Instytut Maszyn Elektrycznych",
+        "symbol": "IME",
+        "code": "10430000"
+    },
+    {
+        "type": "Instytut",
+        "name": "Instytut Mechan.i Poligrafii",
+        "symbol": "IMP",
+        "code": "11010000"
+    },
+    {
+        "type": "Instytut",
+        "name": "Instytut Organiz.System.Prod.",
+        "symbol": "IOSP",
+        "code": "11030000"
+    },
+    {
+        "type": "Instytut",
+        "name": "Instytut PiMR",
+        "symbol": "IP",
+        "code": "11550000"
+    },
+    {
+        "type": "Instytut",
+        "name": "Instytut Podstaw Budowy Maszyn",
+        "symbol": "IPBM",
+        "code": "11520000"
+    },
+    {
+        "type": "Instytut",
+        "name": "Instytut Pojazdów",
+        "symbol": "IP",
+        "code": "11530000"
+    },
+    {
+        "type": "Instytut",
+        "name": "Instytut Radioelektroniki",
+        "symbol": "IR",
+        "code": "10340000"
+    },
+    {
+        "type": "Instytut",
+        "name": "Instytut Systemów Elektron.",
+        "symbol": "ISE",
+        "code": "10330000"
+    },
+    {
+        "type": "Instytut",
+        "name": "Instytut Technik Wytwarzania",
+        "symbol": "ITW",
+        "code": "11040000"
+    },
+    {
+        "type": "Instytut",
+        "name": "Instytut Techniki Cieplnej",
+        "symbol": "ITC",
+        "code": "11310000"
+    },
+    {
+        "type": "Instytut",
+        "name": "Instytut Telekomunikacji",
+        "symbol": "IT",
+        "code": "10360000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Kancelaria Biura Rektora",
+        "symbol": "BRKA",
+        "code": "18010700"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Kancelaria Tajna PW",
+        "symbol": "KTP",
+        "code": "18700000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Kanclerz",
+        "symbol": "K",
+        "code": "80000000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Kierownik Administracyjny WCh",
+        "symbol": "KAWCH",
+        "code": ""
+    },
+    {
+        "type": "Jednostka",
+        "name": "Kolegium Nauk Ekonom.i Społ.",
+        "symbol": "KNES",
+        "code": "72000000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Kolegium Nauk Ekonomicznych i Społecznych",
+        "symbol": "KNEiS",
+        "code": ""
+    },
+    {
+        "type": "Jednostka",
+        "name": "Koliba Studencka PW",
+        "symbol": "KSP",
+        "code": "82830000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Księgarnia Akademicka OW",
+        "symbol": "KAO",
+        "code": "93410000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Kwestura",
+        "symbol": "K",
+        "code": "18100000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Kwestura",
+        "symbol": "K",
+        "code": "81000000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Kwestura Płock",
+        "symbol": "KP",
+        "code": "78050000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "LOP Południe",
+        "symbol": "LOPPD",
+        "code": "11400040"
+    },
+    {
+        "type": "Laboratorium",
+        "name": "Lab. Bad.i Roz.Syst.i Apl. Mob",
+        "symbol": "LBRSAM",
+        "code": "10380000"
+    },
+    {
+        "type": "Laboratorium",
+        "name": "Laboratorium Procesów Technol.",
+        "symbol": "LPT",
+        "code": "10210000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "MCOF",
+        "symbol": "M",
+        "code": "11810000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Mała Poligrafia OW",
+        "symbol": "MPO",
+        "code": "92410000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Międzynarodowe Centrum Ontologii Formalnej (WAiNS)",
+        "symbol": "MCOF",
+        "code": "11810000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Muzeum PW",
+        "symbol": "MP",
+        "code": "43900000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Muzeum PW_do31122019",
+        "symbol": "MP",
+        "code": "14000000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Muzeum Politechniki Warszawskiej",
+        "symbol": "MPW",
+        "code": ""
+    },
+    {
+        "type": "Jednostka",
+        "name": "OCT",
+        "symbol": "O",
+        "code": "11610000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Obsł.pat.licenc",
+        "symbol": "OPL",
+        "code": "80990000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Oddział Gromadzenia i Opracowania Zbiorów BG",
+        "symbol": "GOZOBG",
+        "code": "43101600"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Oddział Informacji Naukowej i Analiz Bibliometrycznych BG",
+        "symbol": "INABOBG",
+        "code": "43101700"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Oddział Kontroli Zbiorów BG",
+        "symbol": "KZOBG",
+        "code": "43100500"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Oddział Udostępniania i Przechowywania Zbiorów BG",
+        "symbol": "UPUBG",
+        "code": "43100700"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Oddział Utrzymania Systemów Bibliotecznych i Obsługi Informatycznej BG",
+        "symbol": "USBOIOBG",
+        "code": "43100400"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Oddział Zbiorów Specjalnych i Tworzenia Zasobów Cyfrowych BG",
+        "symbol": "ZSTZCOBG",
+        "code": "43101800"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Oficyna Wydawnicza",
+        "symbol": "OW",
+        "code": "64400000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Oficyna Wydawnicza_do31122019",
+        "symbol": "OW",
+        "code": "83410000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Orkiestra Rozrywkowa PW",
+        "symbol": "ORP",
+        "code": "82460000"
+    },
+    {
+        "type": "Ośrodek",
+        "name": "Ośr.Kształc.na Odległość",
+        "symbol": "OKO",
+        "code": "63900000"
+    },
+    {
+        "type": "Ośrodek",
+        "name": "Ośrodek Grybów",
+        "symbol": "OG",
+        "code": "80500000"
+    },
+    {
+        "type": "Ośrodek",
+        "name": "Ośrodek Informacji Patentowej BG",
+        "symbol": "OIPOBG",
+        "code": "43101701"
+    },
+    {
+        "type": "Ośrodek",
+        "name": "Ośrodek Prom. Bad. z Zakr. Ene",
+        "symbol": "OPBZE",
+        "code": "10450000"
+    },
+    {
+        "type": "Ośrodek",
+        "name": "Ośrodek Sarbinowo",
+        "symbol": "OS",
+        "code": "80520000"
+    },
+    {
+        "type": "Ośrodek",
+        "name": "Ośrodek Ublik",
+        "symbol": "OU",
+        "code": "80510000"
+    },
+    {
+        "type": "Ośrodek",
+        "name": "Ośrodek Wilga",
+        "symbol": "OW",
+        "code": "80530000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "P.Rek.Informat",
+        "symbol": "PRI",
+        "code": "18120000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Pełn.Rekt.ds.Inf.Niejawn",
+        "symbol": "PRIN",
+        "code": "18710000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Politechnika Warszawska Filia w Płocku",
+        "symbol": "PWFwP",
+        "code": ""
+    },
+    {
+        "type": "Jednostka",
+        "name": "Pracownia Technik Audiowizualnych",
+        "symbol": "DAGPTA",
+        "code": "83330700"
+    },
+    {
+        "type": "Władze",
+        "name": "Prorektor ds. Filii w Płocku",
+        "symbol": "PFP",
+        "code": "70000000"
+    },
+    {
+        "type": "Władze",
+        "name": "Prorektor ds. Ogólnych",
+        "symbol": "PO",
+        "code": "90000008"
+    },
+    {
+        "type": "Władze",
+        "name": "Prorektor ds. Rozwoju",
+        "symbol": "PR",
+        "code": "90000010"
+    },
+    {
+        "type": "Władze",
+        "name": "Prorektor ds.Nauki",
+        "symbol": "PN",
+        "code": "90000009"
+    },
+    {
+        "type": "Władze",
+        "name": "Prorektor ds.Studenckich",
+        "symbol": "PS",
+        "code": "90000013"
+    },
+    {
+        "type": "Władze",
+        "name": "Prorektor ds.Studiów",
+        "symbol": "PS",
+        "code": "90000007"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Przedszkole PW",
+        "symbol": "PP",
+        "code": "80540000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Rada Doktorantów",
+        "symbol": "RD",
+        "code": "54440000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Rektor",
+        "symbol": "R",
+        "code": "90000015"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Samodzielne Stanowisko ds. Administracyjnych (WF)",
+        "symbol": "ADMGSA",
+        "code": ""
+    },
+    {
+        "type": "Jednostka",
+        "name": "Samodzielne Stanowisko ds. BHP",
+        "symbol": "SSB",
+        "code": "78060000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Samodzielne Stanowisko ds. Inwestycyjnych WCh",
+        "symbol": "GŁSINW",
+        "code": ""
+    },
+    {
+        "type": "Jednostka",
+        "name": "Samodzielne Stanowisko ds. Naukowych WCh",
+        "symbol": "SSTN",
+        "code": ""
+    },
+    {
+        "type": "Jednostka",
+        "name": "Samodzielne Stanowisko ds. Obr",
+        "symbol": "SSO",
+        "code": "78070000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Samodzielne stanowisko ds. Wglądów Archiwalnych",
+        "symbol": "ARCHSSWA",
+        "code": ""
+    },
+    {
+        "type": "Jednostka",
+        "name": "Samodzielne stanowisko ds. administracyjnych (WE)",
+        "symbol": "ENWASA",
+        "code": ""
+    },
+    {
+        "type": "Jednostka",
+        "name": "Samorząd Studentów",
+        "symbol": "SS",
+        "code": "55160000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Samorząd Studentów-filia Płock",
+        "symbol": "SSFP",
+        "code": "57000000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Sekcja Archiwum Szkoły",
+        "symbol": "DAGSAS",
+        "code": "83330500"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Sekcja Dokumentacji Ogólnouczelnianej",
+        "symbol": "ARCHSDO",
+        "code": "80480100"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Sekcja Dokumentacji i Obsługi Absolwenckiej",
+        "symbol": "ARCHSDOA",
+        "code": "80480200"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Sekcja Dozorców ABM",
+        "symbol": "",
+        "code": "80420100"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Sekcja Finansowo Ekonomiczna ABM",
+        "symbol": "",
+        "code": "80420200"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Sekcja Kolekcji Dziedzinowych BG",
+        "symbol": "KDUBG",
+        "code": "43101601"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Sekcja Konserwacyjno Naprawcza ABM",
+        "symbol": "",
+        "code": "80420300"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Sekcja Obsługi Administracyjnej",
+        "symbol": "DAGSOA",
+        "code": "83330800"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Sekcja Obsługi Księgozbioru Dydaktycznego i Magazynów BG",
+        "symbol": "OKDMUBG",
+        "code": "43100707"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Sekcja Poczty Wewnętrznej",
+        "symbol": "DAGPW",
+        "code": "83330600"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Sekcja Rozliczeń Finansowych",
+        "symbol": "DAGSRF",
+        "code": "83330900"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Sekcja Udostępniania BG",
+        "symbol": "UPUBG",
+        "code": "43100704"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Sekcja ds. Implementacji Cyberbezpieczeństwa",
+        "symbol": "SIC",
+        "code": "23201900"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Sekcja ds. Nieruchomości i Majątku PW",
+        "symbol": "DAGSNiM",
+        "code": "83331900"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Sekcja ds. Osób z Niepełnosprawnościami",
+        "symbol": "BiSOUSON",
+        "code": "18220100"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Sekcja ds. Systemu EZD",
+        "symbol": "SEZD",
+        "code": "23202000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Sekcja ds. zarządzania systemem parkingowym",
+        "symbol": "DAGSZSP",
+        "code": "83331700"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Sekretariat (MEiL)",
+        "symbol": "ITLSEC",
+        "code": "11320040"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Sekretariat (WF)",
+        "symbol": "ADSEKR",
+        "code": "10500040"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Sekretariat Kolegium Nauk Ekonomicznych i Społecznych",
+        "symbol": "SKNEiS",
+        "code": "72000010"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Straż Akademicka PW",
+        "symbol": "SAP",
+        "code": "80360000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Studium Języków Obcych",
+        "symbol": "SJO",
+        "code": "64200000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Studium Wychow.Fiz.i Sportu",
+        "symbol": "SWFS",
+        "code": "53500000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Studium Wychow.Fiz.i Sportu_20",
+        "symbol": "SWFS",
+        "code": "64300000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Studium Wychowania Fizycznego i Sportu",
+        "symbol": "SWFiS",
+        "code": ""
+    },
+    {
+        "type": "Jednostka",
+        "name": "Szkoła Biznesu",
+        "symbol": "SB",
+        "code": ""
+    },
+    {
+        "type": "Jednostka",
+        "name": "Szkoła Doktorska",
+        "symbol": "SD",
+        "code": "46060000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Szkoła Doktorska Nr 1",
+        "symbol": "SDN",
+        "code": "46010000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Szkoła Doktorska Nr 1_31122020",
+        "symbol": "SDN",
+        "code": "66010000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Szkoła Doktorska Nr 2",
+        "symbol": "SDN",
+        "code": "46020000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Szkoła Doktorska Nr 2_31122020",
+        "symbol": "SDN",
+        "code": "66020000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Szkoła Doktorska Nr 3",
+        "symbol": "SDN",
+        "code": "46030000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Szkoła Doktorska Nr 3_31122020",
+        "symbol": "SDN",
+        "code": "66030000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Szkoła Doktorska Nr 4",
+        "symbol": "SDN",
+        "code": "46040000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Szkoła Doktorska Nr 4_31122020",
+        "symbol": "SDN",
+        "code": "66040000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Szkoła Doktorska Nr 5",
+        "symbol": "SDN",
+        "code": "46050000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Szkoła Doktorska Nr 5_31122020",
+        "symbol": "SDN",
+        "code": "66050000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Szoła Biznesu",
+        "symbol": "SB",
+        "code": "64100000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Teatr Politechniki Warsz.",
+        "symbol": "TPW",
+        "code": "82870000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Uczeln. Centrum Bad. Lotn. i K",
+        "symbol": "UCBLK",
+        "code": "44900000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Uczeln. Centrum Bad. Mater. Fu",
+        "symbol": "UCBMF",
+        "code": "44600000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Uczeln. Centrum Bad. Obron. i",
+        "symbol": "UCBO",
+        "code": "45000000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Uczeln.C.Bad.Ener.i Ochr.Środ.",
+        "symbol": "UCBEOŚ",
+        "code": "44400000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Uczeln.Centrum Bad.Zrówn.Syst.",
+        "symbol": "UCBZS",
+        "code": "43800000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Uczeln.Punkt Kont. Europ. Prog",
+        "symbol": "UPKEP",
+        "code": "43710000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Uczelniana Agencja Programów E",
+        "symbol": "UAPE",
+        "code": "43720000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Uczelniana Agencja Programów Edukacyjnych",
+        "symbol": "UAPE",
+        "code": "43400100"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Uczelniane Laborat.Badań Środ.",
+        "symbol": "ULBŚ",
+        "code": "80400000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "WIBHIŚ",
+        "symbol": "W",
+        "code": "11100000"
+    },
+    {
+        "type": "Wydział",
+        "name": "Wydział Administr.i Nauk Społ.",
+        "symbol": "WANS",
+        "code": "11800000"
+    },
+    {
+        "type": "Wydział",
+        "name": "Wydział Administracji i Nauk Społecznych",
+        "symbol": "WAiNS",
+        "code": ""
+    },
+    {
+        "type": "Wydział",
+        "name": "Wydział Architektury",
+        "symbol": "WA",
+        "code": "10100000"
+    },
+    {
+        "type": "Wydział",
+        "name": "Wydział Bud.,Mechan.i Petroch.",
+        "symbol": "WBP",
+        "code": "71900000"
+    },
+    {
+        "type": "Wydział",
+        "name": "Wydział Budownictwa, Mechaniki i Petrochemii",
+        "symbol": "WBMiP",
+        "code": ""
+    },
+    {
+        "type": "Wydział",
+        "name": "Wydział Chemiczny",
+        "symbol": "WCh",
+        "code": "10200000"
+    },
+    {
+        "type": "Wydział",
+        "name": "Wydział Elektr.i Techn.Inform.",
+        "symbol": "WETI",
+        "code": "10300000"
+    },
+    {
+        "type": "Wydział",
+        "name": "Wydział Elektroniki i Technik Informacyjnych",
+        "symbol": "WEiTI",
+        "code": ""
+    },
+    {
+        "type": "Wydział",
+        "name": "Wydział Elektryczny",
+        "symbol": "WE",
+        "code": "10400000"
+    },
+    {
+        "type": "Wydział",
+        "name": "Wydział Fizyki",
+        "symbol": "WF",
+        "code": "10500000"
+    },
+    {
+        "type": "Wydział",
+        "name": "Wydział Geodezji i Kartografii",
+        "symbol": "WGiK",
+        "code": "10600000"
+    },
+    {
+        "type": "Wydział",
+        "name": "Wydział Instalacji Budowlanych, Hydrotechniki i Inżynierii Środowiska",
+        "symbol": "WIBHiIŚ",
+        "code": ""
+    },
+    {
+        "type": "Wydział",
+        "name": "Wydział Inżyn.Chem.i Proces.",
+        "symbol": "WICP",
+        "code": "10700000"
+    },
+    {
+        "type": "Wydział",
+        "name": "Wydział Inżyn.Materiałowej",
+        "symbol": "WIM",
+        "code": "10900000"
+    },
+    {
+        "type": "Wydział",
+        "name": "Wydział Inżynierii Chemicznej i Procesowej",
+        "symbol": "WIChiP",
+        "code": ""
+    },
+    {
+        "type": "Wydział",
+        "name": "Wydział Inżynierii Lądowej",
+        "symbol": "WIL",
+        "code": "10800000"
+    },
+    {
+        "type": "Wydział",
+        "name": "Wydział Inżynierii Materiałowej",
+        "symbol": "WIM",
+        "code": ""
+    },
+    {
+        "type": "Wydział",
+        "name": "Wydział Matemat.i Nauk Inform.",
+        "symbol": "WMNI",
+        "code": "11200000"
+    },
+    {
+        "type": "Wydział",
+        "name": "Wydział Matematyki i Nauk Informacyjnych",
+        "symbol": "WMiNI",
+        "code": ""
+    },
+    {
+        "type": "Wydział",
+        "name": "Wydział Mechan.Energ.i Lotn.",
+        "symbol": "WMEL",
+        "code": "11300000"
+    },
+    {
+        "type": "Wydział",
+        "name": "Wydział Mechan.Technologiczny",
+        "symbol": "WMT",
+        "code": "11000000"
+    },
+    {
+        "type": "Wydział",
+        "name": "Wydział Mechaniczny Energetyki i Lotnictwa",
+        "symbol": "MEiL",
+        "code": ""
+    },
+    {
+        "type": "Wydział",
+        "name": "Wydział Mechatroniki",
+        "symbol": "WMchtr",
+        "code": "11400000"
+    },
+    {
+        "type": "Wydział",
+        "name": "Wydział Samoch.i Maszyn Rob.",
+        "symbol": "WSMR",
+        "code": "11500000"
+    },
+    {
+        "type": "Wydział",
+        "name": "Wydział Samochodów i Maszyn Roboczych",
+        "symbol": "WSiMR",
+        "code": ""
+    },
+    {
+        "type": "Wydział",
+        "name": "Wydział Transportu",
+        "symbol": "WT",
+        "code": "11600000"
+    },
+    {
+        "type": "Wydział",
+        "name": "Wydział Zarządzania",
+        "symbol": "WZ",
+        "code": "11700000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Z-ca Kanclerza ds. Technicznyc",
+        "symbol": "CKT",
+        "code": "83000000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Z-ca Kanclerza ds.Działaln. Po",
+        "symbol": "CKDP",
+        "code": "82000000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Z-ca Kanclerza ds.Rozwoju",
+        "symbol": "CKR",
+        "code": "84000000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Z-ca Kierownika Administracyjnego WCh ds. Finansowych",
+        "symbol": "ZKWCH",
+        "code": ""
+    },
+    {
+        "type": "Jednostka",
+        "name": "ZFŚŚ emeryci",
+        "symbol": "ZE",
+        "code": "99990000"
+    },
+    {
+        "type": "Zakład",
+        "name": "Zakład Architektur i Zastosowań Internetu",
+        "symbol": "ZAiZI",
+        "code": "10360800"
+    },
+    {
+        "type": "Zakład",
+        "name": "Zakład Badań Strukturalnych (WF)",
+        "symbol": "FIZBST",
+        "code": "10500500"
+    },
+    {
+        "type": "Zakład",
+        "name": "Zakład Chemii Ogólnej",
+        "symbol": "ZCO",
+        "code": "71901100"
+    },
+    {
+        "type": "Zakład",
+        "name": "Zakład Finansów (WZ)",
+        "symbol": "ZFWZ",
+        "code": "11701700"
+    },
+    {
+        "type": "Zakład",
+        "name": "Zakład Fizyki Jądrowej (WF)",
+        "symbol": "FIZFIJ",
+        "code": "10500700"
+    },
+    {
+        "type": "Zakład",
+        "name": "Zakład Inżynierii Środowiska",
+        "symbol": "ZIŚ",
+        "code": "71900900"
+    },
+    {
+        "type": "Zakład",
+        "name": "Zakład Konserwacyjno-Remontowy",
+        "symbol": "ZKR",
+        "code": "83450000"
+    },
+    {
+        "type": "Zakład",
+        "name": "Zakład Maszyn Roboczych",
+        "symbol": "ZMR",
+        "code": "11500200"
+    },
+    {
+        "type": "Zakład",
+        "name": "Zakład Matematyki i Fizyki",
+        "symbol": "ZMF",
+        "code": "71940000"
+    },
+    {
+        "type": "Zakład",
+        "name": "Zakład Metod Numerycznych i Struktur Inteligentnych",
+        "symbol": "ZMNISI",
+        "code": "11500300"
+    },
+    {
+        "type": "Zakład",
+        "name": "Zakład Multimediów Cyfrowych",
+        "symbol": "ENIMC",
+        "code": "10320100"
+    },
+    {
+        "type": "Zakład",
+        "name": "Zakład Napędów Pojazdów",
+        "symbol": "ZNPO",
+        "code": "11500400"
+    },
+    {
+        "type": "Zakład",
+        "name": "Zakład Podstaw Budowy Maszyn",
+        "symbol": "ZPBM",
+        "code": "11500500"
+    },
+    {
+        "type": "Zakład",
+        "name": "Zakład Prawa Administracyjnego i Nauki o Politykach Publicznych (WAiNS)",
+        "symbol": "ZPAiNPP",
+        "code": "11800900"
+    },
+    {
+        "type": "Zakład",
+        "name": "Zakład Procesów Produkcyjnych i Logistyki (WZ)",
+        "symbol": "ZPPiL",
+        "code": "11030200"
+    },
+    {
+        "type": "Zakład",
+        "name": "Zakład Przedsiębiorczości i Innowacji (WZ)",
+        "symbol": "ZPiIWZ",
+        "code": "11701600"
+    },
+    {
+        "type": "Zakład",
+        "name": "Zakład Rozwoju Strategicznego Organizacji (WZ)",
+        "symbol": "ZRSOWZ",
+        "code": "11701500"
+    },
+    {
+        "type": "Zakład",
+        "name": "Zakład Systemów Inteligentnych (WZ)",
+        "symbol": "ZSIWZ",
+        "code": "11701900"
+    },
+    {
+        "type": "Zakład",
+        "name": "Zakład Technologii Informacyjnych (WZ)",
+        "symbol": "ZTIn",
+        "code": "11030300"
+    },
+    {
+        "type": "Zakład",
+        "name": "Zakład Technologii Organicznej",
+        "symbol": "ZTO",
+        "code": "71901000"
+    },
+    {
+        "type": "Zakład",
+        "name": "Zakład Zarządzania Produkcją, Procesami i Projektami (WZ)",
+        "symbol": "ZZPPiPWZ",
+        "code": "11701800"
+    },
+    {
+        "type": "Zakład",
+        "name": "Zakład Zarządzania Publicznego (WZ)",
+        "symbol": "ZZPWZ",
+        "code": "11702000"
+    },
+    {
+        "type": "Zakład",
+        "name": "Zakład Zarządzania i Jakości (WZ)",
+        "symbol": "ZZiJ",
+        "code": "11030500"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Zespół Audytu Wewnętrznego",
+        "symbol": "ZAW",
+        "code": "18740000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Zespół Domów Studenckich",
+        "symbol": "ZDS",
+        "code": "82390000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Zespół Finansów i Rachunkowości",
+        "symbol": "ZFiR",
+        "code": "72000300"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Zespół Informatyczny (WAiNS)",
+        "symbol": "ZIAiNS",
+        "code": "11800060"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Zespół Kontroli Wewnętrznej",
+        "symbol": "ZKW",
+        "code": "18110000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Zespół Lektorów",
+        "symbol": "ZL",
+        "code": "71960000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Zespół Nauk Ekonomicznych i Społecznych",
+        "symbol": "ZNEiS",
+        "code": "72000100"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Zespół Obsługi Informatycznej",
+        "symbol": "ZOI",
+        "code": "80900000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Zespół Pieśni i Tańca",
+        "symbol": "ZPT",
+        "code": "82140000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Zespół Wychow.Fizyczn.i Sportu",
+        "symbol": "ZWFS",
+        "code": "71950000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Zespół ds. Nauki",
+        "symbol": "ZN",
+        "code": "80060000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Zespół ds. Obsługi Sygnalistów",
+        "symbol": "BiSOUZOS",
+        "code": "18220300"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Zespół ds. SZJ",
+        "symbol": "ZS",
+        "code": "80760000"
+    },
+    {
+        "type": "Jednostka",
+        "name": "Zint.Śr.Lab.Sys.M.Poj.i M.Rob.",
+        "symbol": "ZŚLSMPMR",
+        "code": "11540000"
+    }
+]

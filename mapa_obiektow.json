@@ -1,0 +1,600 @@
+[
+    {
+        "id": "custom/rektorska-4",
+        "name": "Rektorska 4",
+        "shortName": "",
+        "category": "administracja",
+        "address": "Rektorska 4, 00-614 Warszawa",
+        "desc": "Administracja Centralna",
+        "coords": [
+            52.21806535,
+            21.00981283
+        ],
+        "website": "https://www.pw.edu.pl/kampus/rektorska-4"
+    },
+    {
+        "id": "custom/noakowskiego-18-20",
+        "name": "Gmach Biurowy",
+        "shortName": "",
+        "category": "administracja",
+        "address": "Stanisława Noakowskiego 18/20, 00-668 Warszawa",
+        "desc": "Administracja Centralna",
+        "coords": [
+            52.22189879,
+            21.00977282
+        ],
+        "website": "https://www.pw.edu.pl/kampus/gmach-biurowy"
+    },
+    {
+        "id": "custom/gmach-glowny",
+        "name": "Gmach Główny",
+        "shortName": "",
+        "category": "budynek PW",
+        "address": "pl. Politechniki 1, 00-661 Warszawa",
+        "desc": "Główny gmach uczelni",
+        "coords": [
+            52.22059376,
+            21.01024281
+        ],
+        "website": "https://www.pw.edu.pl/kampus/gmach-glowny"
+    },
+    {
+        "id": "way/23558737",
+        "name": "Gmach Technologii Chemicznej",
+        "shortName": "WCh",
+        "category": "wydział",
+        "address": "Aleja Niepodległości 222A, Warszawa",
+        "desc": "Budynek wydziałowy",
+        "coords": [
+            52.2224351,
+            21.0058811
+        ],
+        "website": ""
+    },
+    {
+        "id": "way/23558744",
+        "name": "Nowa Kreślarnia",
+        "shortName": "WT",
+        "category": "wydział",
+        "address": "Koszykowa 75, 00-662 Warszawa",
+        "desc": "Budynek wydziałowy",
+        "coords": [
+            52.2223503,
+            21.0080173
+        ],
+        "website": ""
+    },
+    {
+        "id": "node/5565136115",
+        "name": "Wydział Inżynierii Materiałowej PW",
+        "shortName": "WIM",
+        "category": "wydział",
+        "address": "Jana Bytnara „Rudego” 25, 02-645 Warszawa",
+        "desc": "Wydział",
+        "coords": [
+            52.1922171,
+            21.0033473
+        ],
+        "website": "http://www.inmat.pw.edu.pl/"
+    },
+    {
+        "id": "way/380178452",
+        "name": "Wydział Samochodów i Maszyn Roboczych",
+        "shortName": "SiMR",
+        "category": "wydział",
+        "address": "Ludwika Narbutta 84, 02-524 Warszawa",
+        "desc": "Wydział",
+        "coords": [
+            52.2042387,
+            21.0022415
+        ],
+        "website": "http://www.simr.pw.edu.pl/"
+    },
+    {
+        "id": "custom/wains",
+        "name": "Wydział Administracji i Nauk Społecznych",
+        "shortName": "WAiNS",
+        "category": "wydział",
+        "address": "pl. Politechniki 1, 00-661 Warszawa",
+        "desc": "Wydział",
+        "coords": [
+            52.22063761,
+            21.0099038
+        ],
+        "website": ""
+    },
+    {
+        "id": "custom/wa",
+        "name": "Wydział Architektury",
+        "shortName": "WA",
+        "category": "wydział",
+        "address": "Koszykowa 55, 00-695 Warszawa",
+        "desc": "Wydział",
+        "coords": [
+            52.22235359,
+            21.01289921
+        ],
+        "website": ""
+    },
+    {
+        "id": "custom/weit",
+        "name": "Wydział Elektroniki i Technik Informacyjnych",
+        "shortName": "WEiTI",
+        "category": "wydział",
+        "address": "Nowowiejska 15/19, 00-665 Warszawa",
+        "desc": "Wydział",
+        "coords": [
+            52.21904319,
+            21.01185442
+        ],
+        "website": ""
+    },
+    {
+        "id": "custom/we",
+        "name": "Wydział Elektryczny",
+        "shortName": "WE",
+        "category": "wydział",
+        "address": "pl. Politechniki 1, 00-661 Warszawa",
+        "desc": "Wydział",
+        "coords": [
+            52.22142135,
+            21.00608361
+        ],
+        "website": ""
+    },
+    {
+        "id": "custom/wf",
+        "name": "Wydział Fizyki",
+        "shortName": "WF",
+        "category": "wydział",
+        "address": "Koszykowa 75, 00-662 Warszawa",
+        "desc": "Wydział",
+        "coords": [
+            52.22141592,
+            21.00710248
+        ],
+        "website": ""
+    },
+    {
+        "id": "custom/gik",
+        "name": "Wydział Geodezji i Kartografii",
+        "shortName": "GiK",
+        "category": "wydział",
+        "address": "pl. Politechniki 1, 00-661 Warszawa",
+        "desc": "Wydział",
+        "coords": [
+            52.22062045,
+            21.01021302
+        ],
+        "website": ""
+    },
+    {
+        "id": "custom/ichip",
+        "name": "Wydział Inżynierii Chemicznej i Procesowej",
+        "shortName": "IChiP",
+        "category": "wydział",
+        "address": "Waryńskiego 1, 00-645 Warszawa",
+        "desc": "Wydział",
+        "coords": [
+            52.21395102,
+            21.01585502
+        ],
+        "website": ""
+    },
+    {
+        "id": "custom/wil",
+        "name": "Wydział Inżynierii Lądowej",
+        "shortName": "WIL",
+        "category": "wydział",
+        "address": "al. Armii Ludowej 16, 00-637 Warszawa",
+        "desc": "Wydział",
+        "coords": [
+            52.21769154,
+            21.01170808
+        ],
+        "website": ""
+    },
+    {
+        "id": "custom/is",
+        "name": "Wydział Inżynierii Środowiska",
+        "shortName": "IŚ",
+        "category": "wydział",
+        "address": "Nowowiejska 20, 00-653 Warszawa",
+        "desc": "Wydział",
+        "coords": [
+            52.22040886,
+            21.00782429
+        ],
+        "website": ""
+    },
+    {
+        "id": "custom/mini",
+        "name": "Wydział Matematyki i Nauk Informacyjnych",
+        "shortName": "MiNI",
+        "category": "wydział",
+        "address": "Koszykowa 75, 00-662 Warszawa",
+        "desc": "Wydział",
+        "coords": [
+            52.22204743,
+            21.00677252
+        ],
+        "website": ""
+    },
+    {
+        "id": "custom/meil",
+        "name": "Wydział Mechaniczny Energetyki i Lotnictwa",
+        "shortName": "MEiL",
+        "category": "wydział",
+        "address": "Nowowiejska 24, 00-665 Warszawa",
+        "desc": "Wydział",
+        "coords": [
+            52.2209595,
+            21.00525293
+        ],
+        "website": ""
+    },
+    {
+        "id": "custom/wmt",
+        "name": "Wydział Mechaniczny Technologiczny",
+        "shortName": "WMT",
+        "category": "wydział",
+        "address": "Narbutta 85, 02-524 Warszawa",
+        "desc": "Wydział",
+        "coords": [
+            52.2035687,
+            21.00266279
+        ],
+        "website": ""
+    },
+    {
+        "id": "custom/wm",
+        "name": "Wydział Mechatroniki",
+        "shortName": "WM",
+        "category": "wydział",
+        "address": "św. Andrzeja Boboli 8, 02-525 Warszawa",
+        "desc": "Wydział",
+        "coords": [
+            52.20298012,
+            21.00081391
+        ],
+        "website": ""
+    },
+    {
+        "id": "custom/wz",
+        "name": "Wydział Zarządzania",
+        "shortName": "WZ",
+        "category": "wydział",
+        "address": "Narbutta 85, 02-524 Warszawa",
+        "desc": "Wydział",
+        "coords": [
+            52.20330789,
+            21.00281568
+        ],
+        "website": ""
+    },
+    {
+        "id": "way/972583670",
+        "name": "Muzeum Politechniki Warszawskiej",
+        "shortName": "",
+        "category": "budynek PW",
+        "address": "Nowowiejska 24, 00-665 Warszawa",
+        "desc": "Muzeum",
+        "coords": [
+            52.2204124,
+            21.0060626
+        ],
+        "website": "https://www.muzeum.pw.edu.pl/"
+    },
+    {
+        "id": "way/693882871",
+        "name": "CEZAMAT",
+        "shortName": "",
+        "category": "budynek PW",
+        "address": "Poleczki 19, 02-822 Warszawa",
+        "desc": "Centrum badawcze",
+        "coords": [
+            52.1534832,
+            21.008077
+        ],
+        "website": "https://cezamat.eu/"
+    },
+    {
+        "id": "way/842411452",
+        "name": "Zakład Technologii Poligraficznych Politechniki Warszawskiej",
+        "shortName": "",
+        "category": "budynek PW",
+        "address": "",
+        "desc": "Zakład",
+        "coords": [
+            52.2557912,
+            21.0045898
+        ],
+        "website": "https://www.wip.pw.edu.pl/poligrafia/"
+    },
+    {
+        "id": "node/11833106228",
+        "name": "Biuro Karier Politechniki Warszawskiej",
+        "shortName": "",
+        "category": "administracja",
+        "address": "Polna 50, 00-644 Warszawa",
+        "desc": "Biuro",
+        "coords": [
+            52.2193055,
+            21.0135031
+        ],
+        "website": "https://www.bk.pw.edu.pl/"
+    },
+    {
+        "id": "node/5529116187",
+        "name": "Biblioteka PW filia DS Babilon",
+        "shortName": "",
+        "category": "budynek PW",
+        "address": "Kopińska 12/16, Warszawa",
+        "desc": "Biblioteka",
+        "coords": [
+            52.2180189,
+            20.9784114
+        ],
+        "website": ""
+    },
+    {
+        "id": "way/23485610",
+        "name": "Dom Studencki Riviera",
+        "shortName": "",
+        "category": "akademik",
+        "address": "Ludwika Waryńskiego 12, 00-631 Warszawa",
+        "desc": "Dom Studencki",
+        "coords": [
+            52.2162832,
+            21.0162687
+        ],
+        "website": ""
+    },
+    {
+        "id": "way/127548828",
+        "name": "Dom Studencki Mikrus",
+        "shortName": "",
+        "category": "akademik",
+        "address": "Ludwika Waryńskiego 10, 00-631 Warszawa",
+        "desc": "Dom Studencki",
+        "coords": [
+            52.2154701,
+            21.0167493
+        ],
+        "website": "https://www.akademiki.pw.edu.pl/akademiki/Informator-O-Domach-Studenckich/DS-Mikrus"
+    },
+    {
+        "id": "way/30300272",
+        "name": "DS Babilon",
+        "shortName": "",
+        "category": "akademik",
+        "address": "Kopińska 12/16, 02-321 Warszawa",
+        "desc": "Dom Studencki",
+        "coords": [
+            52.2178884,
+            20.9782917
+        ],
+        "website": ""
+    },
+    {
+        "id": "custom/ds-akademik",
+        "name": "DS Akademik",
+        "shortName": "",
+        "category": "akademik",
+        "address": "Akademicka 5, 02-038 Warszawa",
+        "desc": "Dom Studencki",
+        "coords": [
+            52.21759439,
+            20.98399724
+        ],
+        "website": "https://www.akademiki.pw.edu.pl/akademiki/Informator-O-Domach-Studenckich/DS-Akademik"
+    },
+    {
+        "id": "custom/ds-ustronie",
+        "name": "DS Ustronie",
+        "shortName": "",
+        "category": "akademik",
+        "address": "Księcia Janusza 39, 01-452 Warszawa",
+        "desc": "Dom Studencki",
+        "coords": [
+            52.24206499,
+            20.94085525
+        ],
+        "website": "https://www.akademiki.pw.edu.pl/akademiki/Informator-O-Domach-Studenckich/DS-Ustronie"
+    },
+    {
+        "id": "new/wch",
+        "name": "Wydział Chemiczny",
+        "shortName": "WCh",
+        "category": "wydział",
+        "address": "ul. Noakowskiego 3, 00-664 Warszawa",
+        "desc": "Główna siedziba Wydziału Chemicznego.",
+        "coords": [
+            52.22181364,
+            21.00918288
+        ],
+        "website": ""
+    },
+    {
+        "id": "new/wibhiis",
+        "name": "Wydział Instalacji Budowlanych, Hydrotechniki i Inż. Środowiska",
+        "shortName": "WIBHiIŚ",
+        "category": "wydział",
+        "address": "ul. Nowowiejska 20, 00-653 Warszawa",
+        "desc": "Siedziba wydziału.",
+        "coords": [
+            52.22037383,
+            21.00785468
+        ],
+        "website": ""
+    },
+    {
+        "id": "new/gmech",
+        "name": "Gmach Mechaniki",
+        "shortName": "Gmach Mechaniki (MEiL)",
+        "category": "wydział",
+        "address": "ul. Koszykowa 75, 00-662 Warszawa",
+        "desc": "Działalność dydaktyczna.",
+        "coords": [
+            52.22086642,
+            21.00799702
+        ],
+        "website": ""
+    },
+    {
+        "id": "new/syr",
+        "name": "Stadion Syrenki",
+        "shortName": "Stadion Syrenki",
+        "category": "budynek PW",
+        "address": "ul. Henryka Albera 2, 02-591 Warszawa",
+        "desc": "Obiekt sportowy PW.",
+        "coords": [
+            52.21294678,
+            21.01139002
+        ],
+        "website": ""
+    },
+    {
+        "id": "new/stod",
+        "name": "Klub Stodoła",
+        "shortName": "Klub Stodoła",
+        "category": "budynek PW",
+        "address": "ul. Stefana Batorego 10, 02-591 Warszawa",
+        "desc": "Klub studencki.",
+        "coords": [
+            52.21143275,
+            21.01029886
+        ],
+        "website": ""
+    },
+    {
+        "id": "new/gnt",
+        "name": "Gmach Nowy Technologiczny",
+        "shortName": "Nowy Technologiczny",
+        "category": "wydział",
+        "address": "ul. Ludwika Narbutta 85, 02-524 Warszawa",
+        "desc": "Sale seminaryjne.",
+        "coords": [
+            52.20357823,
+            21.00266225
+        ],
+        "website": ""
+    },
+    {
+        "id": "new/gim",
+        "name": "Gmach Inżynierii Materiałowej",
+        "shortName": "Gmach Inż. Materiałowej",
+        "category": "wydział",
+        "address": "ul. Wołoska 141, 02-507 Warszawa",
+        "desc": "Obiekt WIM.",
+        "coords": [
+            52.20131708,
+            20.99973313
+        ],
+        "website": ""
+    },
+    {
+        "id": "new/polna",
+        "name": "Budynek Polna 50",
+        "shortName": "Polna 50",
+        "category": "administracja",
+        "address": "ul. Polna 50, Warszawa",
+        "desc": "Obiekt administracyjny.",
+        "coords": [
+            52.21928355,
+            21.01345879
+        ],
+        "website": ""
+    },
+    {
+        "id": "new/dsm",
+        "name": "DS Muszelka",
+        "shortName": "DS Muszelka",
+        "category": "akademik",
+        "address": "ul. Mochnackiego 12, Warszawa",
+        "desc": "Dom Studencki PW.",
+        "coords": [
+            52.21726508,
+            20.98327157
+        ],
+        "website": ""
+    },
+    {
+        "id": "new/dsb",
+        "name": "DS Bratniak",
+        "shortName": "DS Bratniak",
+        "category": "akademik",
+        "address": "ul. Grójecka 39, Warszawa",
+        "desc": "Dom Studencki PW.",
+        "coords": [
+            52.21767794,
+            20.98277852
+        ],
+        "website": ""
+    },
+    {
+        "id": "new/dst",
+        "name": "DS Tatrzańska",
+        "shortName": "DS Tatrzańska",
+        "category": "akademik",
+        "address": "ul. Tatrzańska 7a, Warszawa",
+        "desc": "Dom Studencki PW.",
+        "coords": [
+            52.20525335,
+            21.03473513
+        ],
+        "website": ""
+    },
+    {
+        "id": "new/dstul",
+        "name": "DS Tulipan",
+        "shortName": "DS Tulipan",
+        "category": "akademik",
+        "address": "ul. Mochnackiego 8, Warszawa",
+        "desc": "Dom Studencki PW.",
+        "coords": [
+            52.21742917,
+            20.98518906
+        ],
+        "website": ""
+    },
+    {
+        "id": "new/dstul",
+        "name": "DS Pineska",
+        "shortName": "DS Pineska",
+        "category": "akademik",
+        "address": "ul. Uniwersytecka 5, Warszawa",
+        "desc": "Dom Studencki PW.",
+        "coords": [
+            52.21790511,
+            20.98547376
+        ],
+        "website": ""
+    },
+    {
+        "id": "new/dsz",
+        "name": "DS Żaczek",
+        "shortName": "DS Żaczek",
+        "category": "akademik",
+        "address": "ul. Wołoska 141A, Warszawa",
+        "desc": "Dom Studencki PW.",
+        "coords": [
+            52.20145235,
+            20.99856175
+        ],
+        "website": ""
+    },
+    {
+        "id": "Biblioteka Terenu Południowego123",
+        "name": "Biblioteka Terenu Południowego",
+        "shortName": "Biblioteka Terenu Południowego",
+        "category": "budynek PW",
+        "address": "Ludwika Narbutta 86, 02-524 Warszawa",
+        "desc": "Biblioteka Terenu Południowego",
+        "coords": [
+            52.203863417980294,
+            21.00064451675693
+        ],
+        "website": "https://www.bg.pw.edu.pl/"
+    }
+]
