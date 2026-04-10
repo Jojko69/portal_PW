@@ -3,6 +3,18 @@ const tableBody = document.getElementById('table-body');
 const modalOverlay = document.getElementById('modal-overlay');
 const form = document.getElementById('editor-form');
 
+// Parsuje wklejone współrzędne w formacie "52.2177, 21.0116" → [52.2177, 21.0116]
+function parseCoords(value) {
+    const trimmed = value.trim();
+    if (!trimmed) return ['', ''];
+    const parts = trimmed.split(',');
+    if (parts.length < 2) return ['', ''];
+    const lat = parseFloat(parts[0].trim());
+    const lng = parseFloat(parts[1].trim());
+    if (isNaN(lat) || isNaN(lng)) return ['', ''];
+    return [lat, lng];
+}
+
 // Mapowanie kolorów tagów dla czytelności
 const getTagClass = (category) => {
     switch(category) {
@@ -67,8 +79,9 @@ function openModal(index = -1) {
         document.getElementById('f-category').value = item.category;
         document.getElementById('f-address').value = item.address;
         document.getElementById('f-desc').value = item.desc;
-        document.getElementById('f-lat').value = item.coords[0] || '';
-        document.getElementById('f-lng').value = item.coords[1] || '';
+        const lat = item.coords[0] || '';
+        const lng = item.coords[1] || '';
+        document.getElementById('f-coords').value = (lat && lng) ? `${lat}, ${lng}` : '';
         document.getElementById('f-website').value = item.website;
     }
     modalOverlay.classList.add('active');
@@ -90,10 +103,7 @@ form.addEventListener('submit', (e) => {
         category: document.getElementById('f-category').value,
         address: document.getElementById('f-address').value,
         desc: document.getElementById('f-desc').value,
-        coords: [
-            parseFloat(document.getElementById('f-lat').value),
-            parseFloat(document.getElementById('f-lng').value)
-        ],
+        coords: parseCoords(document.getElementById('f-coords').value),
         website: document.getElementById('f-website').value
     };
 
