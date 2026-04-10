@@ -3,109 +3,56 @@ const fs = require('fs');
 const path = require('path');
 
 const PORT = 3000;
-const MAPA_FILE = path.join(__dirname, 'mapa_obiektow.json');
-const TELEFONY_FILE = path.join(__dirname, 'data_index_partial_optimized.json');
-const KODY_FILE = path.join(__dirname, 'kody_jednostek.json');
+const PUBLIC_DIR = path.join(__dirname, 'public');
+const DATA_DIR = path.join(__dirname, 'data');
+
+const MAPA_FILE    = path.join(DATA_DIR, 'mapa_obiektow.json');
+const TELEFONY_FILE = path.join(DATA_DIR, 'data_index_partial_optimized.json');
+const KODY_FILE    = path.join(DATA_DIR, 'kody_jednostek.json');
 
 const MIME_TYPES = {
     '.html': 'text/html; charset=utf-8',
     '.json': 'application/json; charset=utf-8',
-    '.js': 'text/javascript; charset=utf-8',
-    '.css': 'text/css; charset=utf-8',
-    '.png': 'image/png',
-    '.jpg': 'image/jpeg',
-    '.svg': 'image/svg+xml'
+    '.js':   'text/javascript; charset=utf-8',
+    '.css':  'text/css; charset=utf-8',
+    '.png':  'image/png',
+    '.jpg':  'image/jpeg',
+    '.svg':  'image/svg+xml'
 };
 
 const server = http.createServer((req, res) => {
     console.log(`Żądanie: ${req.method} ${req.url}`);
 
-    // Endpoint API do zapisu pliku mapa_obiektow.json
+    // --- Endpoint API: zapis mapa_obiektow.json ---
     if (req.method === 'POST' && req.url === '/api/save-mapa') {
-        let bodyChunks = [];
-        req.on('data', chunk => {
-            bodyChunks.push(chunk);
-        });
-        req.on('end', () => {
-            try {
-                let body = Buffer.concat(bodyChunks).toString('utf8');
-                JSON.parse(body);
-                fs.writeFile(MAPA_FILE, body, 'utf8', (err) => {
-                    if (err) {
-                        res.writeHead(500, { 'Content-Type': 'application/json' });
-                        res.end(JSON.stringify({ error: 'Błąd podczas zapisu pliku na serwerze.' }));
-                    } else {
-                        res.writeHead(200, { 'Content-Type': 'application/json' });
-                        res.end(JSON.stringify({ success: true }));
-                    }
-                });
-            } catch (e) {
-                res.writeHead(400, { 'Content-Type': 'application/json' });
-                res.end(JSON.stringify({ error: 'Przesłane dane nie są poprawnym formatem JSON.' }));
-            }
-        });
+        saveJsonFile(req, res, MAPA_FILE);
         return;
     }
 
-    // Endpoint API do zapisu pliku data_index_partial_optimized.json
+    // --- Endpoint API: zapis data_index_partial_optimized.json ---
     if (req.method === 'POST' && req.url === '/api/save-telefony') {
-        let bodyChunks = [];
-        req.on('data', chunk => {
-            bodyChunks.push(chunk);
-        });
-        req.on('end', () => {
-            try {
-                let body = Buffer.concat(bodyChunks).toString('utf8');
-                JSON.parse(body);
-                fs.writeFile(TELEFONY_FILE, body, 'utf8', (err) => {
-                    if (err) {
-                        res.writeHead(500, { 'Content-Type': 'application/json' });
-                        res.end(JSON.stringify({ error: 'Błąd podczas zapisu pliku na serwerze.' }));
-                    } else {
-                        res.writeHead(200, { 'Content-Type': 'application/json' });
-                        res.end(JSON.stringify({ success: true }));
-                    }
-                });
-            } catch (e) {
-                res.writeHead(400, { 'Content-Type': 'application/json' });
-                res.end(JSON.stringify({ error: 'Przesłane dane nie są poprawnym formatem JSON.' }));
-            }
-        });
+        saveJsonFile(req, res, TELEFONY_FILE);
         return;
     }
 
-    // Endpoint API do zapisu pliku kody_jednostek.json
+    // --- Endpoint API: zapis kody_jednostek.json ---
     if (req.method === 'POST' && req.url === '/api/save-kody') {
-        let bodyChunks = [];
-        req.on('data', chunk => {
-            bodyChunks.push(chunk);
-        });
-        req.on('end', () => {
-            try {
-                let body = Buffer.concat(bodyChunks).toString('utf8');
-                JSON.parse(body);
-                fs.writeFile(KODY_FILE, body, 'utf8', (err) => {
-                    if (err) {
-                        res.writeHead(500, { 'Content-Type': 'application/json' });
-                        res.end(JSON.stringify({ error: 'Błąd podczas zapisu pliku na serwerze.' }));
-                    } else {
-                        res.writeHead(200, { 'Content-Type': 'application/json' });
-                        res.end(JSON.stringify({ success: true }));
-                    }
-                });
-            } catch (e) {
-                res.writeHead(400, { 'Content-Type': 'application/json' });
-                res.end(JSON.stringify({ error: 'Przesłane dane nie są poprawnym formatem JSON.' }));
-            }
-        });
+        saveJsonFile(req, res, KODY_FILE);
         return;
     }
 
-    // Standardowe serwowanie plików statycznych
-    let filePath = req.url === '/' ? '/index.html' : req.url;
-    // Usunięcie parametrów zapytania (np. ?t=123) do szukania pliku
-    filePath = filePath.split('?')[0];
-    filePath = path.join(__dirname, filePath);
+    // --- Serwowanie plików statycznych ---
+    let urlPath = req.url === '/' ? '/index.html' : req.url;
+    urlPath = urlPath.split('?')[0]; // Usuń parametry zapytania (np. ?t=123)
+
+    let filePath;
+    if (urlPath.startsWith('/data/')) {
+        // Pliki JSON z katalogu data/
+        filePath = path.join(DATA_DIR, urlPath.slice('/data/'.length));
+    } else {
+        // Pozostałe pliki (HTML, CSS, JS) z katalogu public/
+        filePath = path.join(PUBLIC_DIR, urlPath);
+    }
 
     const extname = String(path.extname(filePath)).toLowerCase();
     const contentType = MIME_TYPES[extname] || 'application/octet-stream';
@@ -126,12 +73,36 @@ const server = http.createServer((req, res) => {
     });
 });
 
+// Pomocnicza funkcja do obsługi zapisu pliku JSON
+function saveJsonFile(req, res, targetFile) {
+    let bodyChunks = [];
+    req.on('data', chunk => bodyChunks.push(chunk));
+    req.on('end', () => {
+        try {
+            const body = Buffer.concat(bodyChunks).toString('utf8');
+            JSON.parse(body); // Walidacja JSON przed zapisem
+            fs.writeFile(targetFile, body, 'utf8', (err) => {
+                if (err) {
+                    res.writeHead(500, { 'Content-Type': 'application/json' });
+                    res.end(JSON.stringify({ error: 'Błąd podczas zapisu pliku na serwerze.' }));
+                } else {
+                    res.writeHead(200, { 'Content-Type': 'application/json' });
+                    res.end(JSON.stringify({ success: true }));
+                }
+            });
+        } catch (e) {
+            res.writeHead(400, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ error: 'Przesłane dane nie są poprawnym formatem JSON.' }));
+        }
+    });
+}
+
 server.listen(PORT, () => {
     console.log('\n========================================================');
     console.log(`✅ Serwer lokalny działa!`);
-    console.log(`🗺️  Strona główna: http://localhost:${PORT}`);
-    console.log(`✏️  Edytor Mapy: http://localhost:${PORT}/edytor.html`);
-    console.log(`📞  Edytor Kontaktów: http://localhost:${PORT}/edytor_telefony.html`);
+    console.log(`🗺️  Strona główna:        http://localhost:${PORT}`);
+    console.log(`✏️  Edytor Mapy:           http://localhost:${PORT}/edytor.html`);
+    console.log(`📞  Edytor Kontaktów:      http://localhost:${PORT}/edytor_telefony.html`);
     console.log(`🔢  Edytor Kodów Jednostek: http://localhost:${PORT}/edytor_kody.html`);
     console.log(`🛑 Aby zatrzymać serwer, naciśnij w konsoli Ctrl + C`);
     console.log('========================================================\n');

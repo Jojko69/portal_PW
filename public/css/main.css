@@ -1,0 +1,235 @@
+/* ============================================================
+   Główne style portalu PW - index.html
+   ============================================================ */
+
+:root {
+    /* Kolory Uczelni i Mapy */
+    --pw-blue: #00458d;
+    --pw-gold: #f2c100;
+    --pw-light-blue: #e6f0fa;
+    --text-dark: #1a1a1a;
+    --sidebar-width: 380px;
+
+    /* Kolory Kategorii Mapy */
+    --color-wydzial: #00458d;
+    --color-admin: #e67e22;
+    --color-ds: #27ae60;
+    --color-budynek: #8e44ad;
+
+    /* Kolory Struktury Organizacyjnej */
+    --org-rektor: #e74c3c;
+    --org-rozwoj: #5dade2;
+    --org-nauka: #3498db;
+    --org-ogolne: #2e86c1;
+    --org-studia: #85c1e9;
+    --org-studenckie: #2874a6;
+    --org-filia: #5dade2;
+    --org-kanclerz: #27ae60;
+    --org-kanclerz-sub: #2ecc71;
+    --org-kwestor: #d35400;
+    --org-kwestor-sub: #f5b041;
+    --org-wydzialy: #f1c40f;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', sans-serif; background-color: #f4f7f6; color: var(--text-dark); height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
+
+/* NAWIGACJA GŁÓWNA (ZAKŁADKI) */
+#main-nav {
+    background: var(--pw-blue);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 20px 0 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    z-index: 2000;
+    position: relative;
+}
+.nav-brand { font-weight: 700; font-size: 1.5rem; text-align: center; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; }
+.nav-brand span { color: var(--pw-gold); }
+
+.tab-buttons { display: flex; height: 45px; overflow-x: auto; width: 100%; justify-content: center; scrollbar-width: none; }
+.tab-buttons::-webkit-scrollbar { display: none; }
+.tab-btn {
+    background: transparent; border: none; color: rgba(255,255,255,0.7); font-family: inherit;
+    font-weight: 600; font-size: 0.95rem; padding: 0 20px; cursor: pointer; transition: 0.2s;
+    border-bottom: 4px solid transparent; height: 100%; white-space: nowrap;
+}
+.tab-btn:hover { color: white; background: rgba(255,255,255,0.05); }
+.tab-btn.active { color: white; border-bottom-color: var(--pw-gold); background: rgba(255,255,255,0.1); }
+
+.tab-content { display: none; flex: 1; height: calc(100vh - 135px); width: 100%; }
+.tab-content.active { display: flex; }
+
+/* Stopka autorska */
+#main-footer {
+    height: 30px;
+    background: var(--pw-blue);
+    color: rgba(255, 255, 255, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    z-index: 2000;
+    position: relative;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+}
+
+/* ========================================================
+   STYLIZACJA ZAKŁADKI 1: MAPA
+   ======================================================== */
+#sidebar { width: var(--sidebar-width); height: 100%; background: white; box-shadow: 2px 0 15px rgba(0,0,0,0.1); z-index: 1001; display: flex; flex-direction: column; }
+.controls { padding: 20px; border-bottom: 1px solid #eee; }
+.search-box { margin-bottom: 15px; }
+#search-input { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; font-family: inherit; font-size: 0.9rem; outline: none; transition: border-color 0.2s; }
+#search-input:focus { border-color: var(--pw-blue); }
+.btn-all { width: 100%; padding: 12px; background: var(--pw-gold); border: none; border-radius: 8px; font-weight: 700; color: var(--pw-blue); cursor: pointer; transition: all 0.2s; margin-bottom: 15px; text-transform: uppercase; font-size: 0.8rem; }
+.btn-all:hover { background: #e1b300; transform: translateY(-1px); box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+.filters { display: flex; flex-direction: column; gap: 10px; }
+.filter-item { display: flex; align-items: center; font-size: 0.9rem; cursor: pointer; font-weight: 600; }
+.filter-item input { margin-right: 10px; cursor: pointer; width: 16px; height: 16px; }
+.legend { padding: 15px 20px; background: #fafafa; font-size: 0.8rem; border-bottom: 1px solid #eee; }
+.legend-title { font-weight: 700; margin-bottom: 8px; text-transform: uppercase; color: #666; font-size: 0.7rem; }
+.legend-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.legend-box { display: flex; align-items: center; gap: 6px; }
+.color-dot { width: 12px; height: 12px; border-radius: 50%; }
+.object-list-wrapper { flex: 1; overflow-y: auto; padding: 0; }
+.object-item { padding: 12px 20px; border-bottom: 1px solid #f0f0f0; cursor: pointer; transition: background 0.2s; position: relative; }
+.object-item:hover { background: var(--pw-light-blue); }
+.object-item h4 { font-size: 0.9rem; margin-bottom: 3px; color: var(--pw-blue); padding-right: 25px; }
+.object-item p { font-size: 0.75rem; color: #666; margin-bottom: 4px; }
+.tag { display: inline-block; padding: 2px 6px; border-radius: 4px; font-size: 0.65rem; font-weight: 700; color: white; }
+.no-coords-badge { position: absolute; top: 15px; right: 15px; font-size: 1rem; cursor: help; }
+
+#map { flex: 1; height: 100%; z-index: 1000; }
+.leaflet-popup-content-wrapper { border-radius: 12px; padding: 5px; }
+.leaflet-popup-content h3 { color: var(--pw-blue); margin-bottom: 5px; font-size: 1.1rem; }
+.popup-info { font-size: 0.9rem; line-height: 1.4; }
+.classic-tooltip { background: rgba(255, 255, 255, 0.95); border: 1px solid rgba(0,0,0,0.2); box-shadow: 0 1px 3px rgba(0,0,0,0.2); font-weight: 700; color: #222; font-size: 0.75rem; padding: 3px 6px; border-radius: 4px; white-space: nowrap; }
+.classic-tooltip::before { display: none; }
+
+/* ========================================================
+   STYLIZACJA ZAKŁADKI 2: STRUKTURA ORGANIZACYJNA
+   ======================================================== */
+#org-tab {
+    background: #f4f7f6;
+    overflow-y: auto;
+    padding: 30px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+#org-tab.active { display: flex; }
+
+.org-container { max-width: 1400px; width: 100%; }
+
+.org-header-doc { text-align: center; margin-bottom: 20px; color: #555; }
+.org-header-doc h2 { font-size: 1.8rem; color: var(--pw-blue); margin-bottom: 10px; }
+.org-header-doc p { font-size: 0.9rem; }
+
+.org-toggle-container {
+    display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; flex-wrap: wrap;
+}
+.org-toggle-btn {
+    padding: 10px 25px; border: 2px solid var(--pw-blue); background: white;
+    color: var(--pw-blue); font-weight: 700; border-radius: 30px; cursor: pointer; transition: 0.2s;
+    font-family: inherit; font-size: 0.95rem;
+}
+.org-toggle-btn.active, .org-toggle-btn:hover {
+    background: var(--pw-blue); color: white; box-shadow: 0 4px 10px rgba(0,69,141,0.2);
+}
+
+.org-view { display: none; width: 100%; animation: fadeIn 0.4s ease-in-out; }
+.org-view.active { display: block; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.org-top-node {
+    background: var(--org-rektor); color: white;
+    padding: 20px; text-align: center; font-size: 1.5rem; font-weight: 700;
+    border-radius: 8px; margin: 0 auto 30px auto; width: 300px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.org-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 40px; }
+.org-grid-3col { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; margin-bottom: 40px; }
+.org-column { background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05); display: flex; flex-direction: column; }
+.org-col-title { padding: 15px; color: white; font-weight: 700; text-align: center; font-size: 1.05rem; min-height: 60px; display: flex; align-items: center; justify-content: center; }
+.org-sub-title { padding: 10px; color: white; font-weight: 600; text-align: center; font-size: 0.9rem; background: rgba(0,0,0,0.15); }
+.org-list { list-style: none; padding: 0; margin: 0; flex: 1; }
+.org-list li { padding: 12px 15px; border-bottom: 1px solid #f0f0f0; font-size: 0.85rem; color: #333; line-height: 1.3; }
+.org-list li:last-child { border-bottom: none; }
+.org-list li:hover { background: #fdfdfd; }
+.org-list-2col { columns: 2; column-gap: 20px; padding: 15px; }
+.org-list-2col li { break-inside: avoid; border-bottom: none; padding: 8px 0; border-bottom: 1px dashed #eee; }
+.org-faculties { background: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); overflow: hidden; }
+.faculties-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); padding: 20px; gap: 10px; }
+.faculty-item { background: #fffbea; border: 1px solid #fdebd0; padding: 10px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; text-align: center; color: #7d6608; transition: background 0.2s; }
+.faculty-item:hover { background: #fcf3cf; }
+
+.bg-rektor { background: var(--org-rektor); }
+.bg-rozwoj { background: var(--org-rozwoj); }
+.bg-nauka { background: var(--org-nauka); }
+.bg-ogolne { background: var(--org-ogolne); }
+.bg-studia { background: var(--org-studia); }
+.bg-studenckie { background: var(--org-studenckie); }
+.bg-filia { background: var(--org-filia); }
+.bg-kanclerz { background: var(--org-kanclerz); }
+.bg-kanclerz-sub { background: var(--org-kanclerz-sub); }
+.bg-kwestor { background: var(--org-kwestor); }
+.bg-kwestor-sub { background: var(--org-kwestor-sub); }
+.bg-wydzialy { background: var(--org-wydzialy); color: #333 !important; }
+
+.org-search-container { width: 100%; max-width: 600px; margin: 0 auto 25px auto; }
+.org-search-input { width: 100%; padding: 14px 20px; font-size: 1.05rem; border: 2px solid #ddd; border-radius: 30px; outline: none; transition: border-color 0.2s, box-shadow 0.2s; text-align: center; }
+.org-search-input:focus { border-color: var(--pw-blue); box-shadow: 0 4px 12px rgba(0,69,141,0.1); }
+.org-highlight { background-color: var(--pw-gold) !important; color: var(--pw-blue) !important; font-weight: 700 !important; border-radius: 4px; }
+
+/* ========================================================
+   STYLIZACJA ZAKŁADKI 3 I 4: TABELE (KODY / TELEFONY)
+   ======================================================== */
+.table-tab-wrapper {
+    background: #f4f7f6;
+    overflow-y: auto;
+    padding: 30px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+.table-tab-wrapper.active { display: flex; }
+
+.data-container { max-width: 1200px; width: 100%; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+
+.data-status-msg { margin-top: 10px; font-size: 0.9rem; color: var(--pw-blue); font-weight: 600; text-align: center; }
+.data-status-error { color: #e74c3c; }
+
+.data-table-wrapper { width: 100%; overflow-x: auto; margin-top: 20px; border-radius: 8px; border: 1px solid #eee; }
+.data-table { width: 100%; border-collapse: collapse; text-align: left; }
+.data-table th, .data-table td { padding: 14px 20px; border-bottom: 1px solid #eee; font-size: 0.9rem; }
+.data-table th { background: var(--pw-light-blue); color: var(--pw-blue); font-weight: 700; white-space: nowrap; position: sticky; top: 0; z-index: 10; }
+.data-table tr:hover { background: #fdfdfd; }
+.data-table tr:last-child td { border-bottom: none; }
+
+.code-symbol { display: inline-block; font-weight: 700; color: #222; background: var(--pw-gold); padding: 4px 10px; border-radius: 4px; font-size: 0.85rem; letter-spacing: 0.5px; }
+.code-number { font-family: monospace; font-size: 1rem; color: var(--pw-blue); font-weight: 600; }
+
+.phone-link { color: var(--pw-blue); font-weight: 600; text-decoration: none; }
+.phone-link:hover { text-decoration: underline; }
+.email-link { color: #555; text-decoration: none; }
+.email-link:hover { color: var(--pw-blue); text-decoration: underline; }
+
+@media (max-width: 768px) {
+    #map-tab { flex-direction: column; }
+    #sidebar { width: 100%; height: 45%; box-shadow: 0 -2px 15px rgba(0,0,0,0.1); }
+    #map { height: 55%; }
+    #org-tab, .table-tab-wrapper { padding: 15px; }
+    .org-top-node { width: 100%; }
+    .org-list-2col { columns: 1; }
+    .data-container { padding: 15px; }
+    .tab-buttons { justify-content: flex-start; -webkit-overflow-scrolling: touch; }
+    .nav-brand { font-size: 1.2rem; }
+}

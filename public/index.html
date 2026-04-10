@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Politechnika Warszawska - Mapa i Struktura</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+    <!-- GÓRNA NAWIGACJA Z ZAKŁADKAMI -->
+    <nav id="main-nav">
+        <div class="nav-brand">PORTAL <span>DZIAŁU TECHNICZNEGO</span></div>
+        <div class="tab-buttons">
+            <button class="tab-btn active" onclick="switchTab('map-tab', this)">Mapa Obiektów</button>
+            <button class="tab-btn" onclick="switchTab('org-tab', this)">Struktura Organizacyjna</button>
+            <button class="tab-btn" onclick="switchTab('codes-tab', this)">Kody jednostek</button>
+            <button class="tab-btn" onclick="switchTab('phone-tab', this)">Książka Telefoniczna</button>
+        </div>
+    </nav>
+
+    <!-- ZAKŁADKA 1: MAPA -->
+    <div id="map-tab" class="tab-content active">
+        <aside id="sidebar">
+            <div class="controls">
+                <div class="search-box">
+                    <input type="text" id="search-input" placeholder="Szukaj obiektu (np. Bratniak)...">
+                </div>
+                <button class="btn-all" onclick="resetMapView()">Pokaż wszystkie obiekty na mapie</button>
+
+                <div class="filters" id="filter-container">
+                    <label class="filter-item"><input type="checkbox" class="filter-check" checked value="wydział"> Wydziały</label>
+                    <label class="filter-item"><input type="checkbox" class="filter-check" checked value="administracja"> Administracja</label>
+                    <label class="filter-item"><input type="checkbox" class="filter-check" checked value="akademik"> Akademiki</label>
+                    <label class="filter-item"><input type="checkbox" class="filter-check" checked value="budynek PW"> Budynki PW</label>
+                </div>
+            </div>
+
+            <div class="legend">
+                <div class="legend-title">Legenda</div>
+                <div class="legend-grid">
+                    <div class="legend-box"><div class="color-dot" style="background: var(--color-wydzial)"></div> Wydziały</div>
+                    <div class="legend-box"><div class="color-dot" style="background: var(--color-admin)"></div> Administracja</div>
+                    <div class="legend-box"><div class="color-dot" style="background: var(--color-ds)"></div> Akademiki</div>
+                    <div class="legend-box"><div class="color-dot" style="background: var(--color-budynek)"></div> Budynki PW</div>
+                </div>
+            </div>
+
+            <div class="object-list-wrapper" id="object-list"></div>
+        </aside>
+        <main id="map"></main>
+    </div>
+
+    <!-- ZAKŁADKA 2: STRUKTURA ORGANIZACYJNA -->
+    <div id="org-tab" class="tab-content">
+        <div class="org-container">
+            <div class="org-header-doc">
+                <h2>SCHEMAT POLITECHNIKI WARSZAWSKIEJ</h2>
+                <p>Wybierz interesujący Cię rodzaj struktury z dokumentów uczelni.</p>
+            </div>
+
+            <div class="org-search-container">
+                <input type="text" id="org-search-input" class="org-search-input" placeholder="Wyszukaj dział, wydział lub biuro (np. Tech)...">
+            </div>
+
+            <div class="org-toggle-container">
+                <button class="org-toggle-btn active" onclick="switchOrgView('view-merytoryczna', this)">Nadzór Merytoryczny (Zał. 7b)</button>
+                <button class="org-toggle-btn" onclick="switchOrgView('view-organizacyjna', this)">Podległość Organizacyjna (Zał. 7a)</button>
+            </div>
+
+            <div class="org-top-node">REKTOR</div>
+
+            <div id="view-merytoryczna" class="org-view active">
+                <div class="org-grid">
+                    <div class="org-column"><div class="org-col-title bg-rozwoj">Prorektor ds. Rozwoju</div><ul class="org-list"><li>Centrum Cyberbezpieczeństwa</li><li>Centrum informatyzacji PW</li><li>Centrum Innowacji</li><li>Centrum Projektów Rozwojowych</li><li>CEZAMAT</li><li>Dział Analiz Strategicznych</li><li>Dział Logistyki i Zakupów</li><li>Uczelniane Centrum Badawcze Obronności i Bezpieczeństwa</li></ul></div>
+                    <div class="org-column"><div class="org-col-title bg-nauka">Prorektor ds. Nauki</div><ul class="org-list"><li>Biblioteka Główna</li><li>Biuro ds. Społecznej Odpowiedzialności Uczelni</li><li>Centrum Doskonałości Sztucznej Inteligencji</li><li>HealthTEC</li><li>C-QuaNT</li><li>Centrum Obsługi Projektów</li><li>Centrum Wiarygodnej Sztucznej Inteligencji</li><li>Centrum Współpracy Międzynarodowej</li><li>Dział Centralnej Sprawozdawczości</li><li>Szkoła Doktorska PW</li><li>Uczelniane Centrum Badawcze Lotnictwa i Kosmonautyki</li><li>Zespół ds. Nauki</li></ul></div>
+                    <div class="org-column"><div class="org-col-title bg-ogolne">Prorektor ds. Ogólnych</div><ul class="org-list"><li>Biuro Obsługi Prawnej</li><li>Biuro Rektora</li><li>Biuro Spraw Osobowych</li><li>Dział Bezpieczeństwa Informacji PW</li><li>Dział ds. Ochrony Informacji Niejawnych i Spraw Obronnych</li><li>Dział Ekonomiczny</li><li>Dział Socjalny</li><li>Dział Wsparcia Rozwoju Pracowników</li><li>Inspektorat BHP</li><li>Zespół ds. Systemów Zarządzania Jakością</li></ul></div>
+                    <div class="org-column"><div class="org-col-title bg-studia">Prorektor ds. Studiów</div><ul class="org-list"><li>Biuro Komunikacji i Promocji</li><li>Centrum Studiów Zaawansowanych</li><li>Centrum Wsparcia Dydaktyki</li><li>Dział ds. Studiów</li><li>Oficyna Wydawnicza</li><li>Ośrodek Kształcenia na Odległość</li><li>Studium Języków Obcych</li><li>Szkoła Biznesu</li><li>UTW PW</li></ul></div>
+                    <div class="org-column"><div class="org-col-title bg-studenckie">Prorektor ds. Studenckich</div><ul class="org-list"><li>Biuro ds. Przyjęć na Studia</li><li>Biuro Karier</li><li>Chór Akademicki PW</li><li>Muzeum PW</li><li>Orkiestra Rozrywkowa PW</li><li>Studium Wychowania Fizycznego i Sportu</li><li>Teatr PW</li><li>Zespół Domów Studenckich</li><li>Zespół Pieśni i Tańca PW</li></ul></div>
+                    <div class="org-column" style="gap: 20px; background: transparent; box-shadow: none;">
+                        <div style="background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05);"><div class="org-col-title bg-filia">Prorektor ds. Filii</div><ul class="org-list"><li>Politechnika Warszawska Filia w Płocku</li></ul></div>
+                        <div style="background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05);"><div class="org-col-title bg-kanclerz">Kanclerz</div><ul class="org-list"><li>Administracja Budynków Mieszkalnych</li><li>Archiwum PW</li><li>Dział Inwentaryzacji</li><li>Inspektorat Ochrony Przeciwpożarowej</li><li>Straż Akademicka</li></ul><div class="org-sub-title bg-kanclerz-sub">Z-ca Kanclerza ds. Technicznych</div><ul class="org-list"><li>Dział Administracyjno Gospodarczy</li><li>Dział Inwestycji i Remontów</li><li>Dział Techniczny</li></ul></div>
+                        <div style="background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05);"><div class="org-col-title bg-kwestor">Kwestor</div><div class="org-sub-title bg-kwestor-sub">Z-ca Kwestora</div><ul class="org-list"><li>Dział Ewidencji Majątku</li><li>Dział Finansowy</li><li>Dział Księgowości</li><li>Dział Płac</li></ul></div>
+                    </div>
+                </div>
+                <div class="org-faculties"><div class="org-col-title bg-wydzialy">Wydziały Politechniki Warszawskiej</div><div class="faculties-grid"><div class="faculty-item">Wydział Administracji i Nauk Społecznych</div><div class="faculty-item">Wydział Architektury</div><div class="faculty-item">Wydział Budownictwa, Mechaniki i Petrochemii</div><div class="faculty-item">Wydział Chemiczny</div><div class="faculty-item">Wydział Elektroniki i Technik Informacyjnych</div><div class="faculty-item">Wydział Elektryczny</div><div class="faculty-item">Wydział Fizyki</div><div class="faculty-item">Wydział Geodezji i Kartografii</div><div class="faculty-item">Wydział Instalacji Budowlanych, Hydrotechniki i Inż. Środowiska</div><div class="faculty-item">Wydział Inżynierii Chemicznej i Procesowej</div><div class="faculty-item">Wydział Inżynierii Lądowej</div><div class="faculty-item">Wydział Inżynierii Materiałowej</div><div class="faculty-item">Wydział Matematyki i Nauk Informacyjnych</div><div class="faculty-item">Wydział Mechaniczny Energetyki i Lotnictwa</div><div class="faculty-item">Wydział Mechaniczny Technologiczny</div><div class="faculty-item">Wydział Mechatroniki</div><div class="faculty-item">Wydział Samochodów i Maszyn Roboczych</div><div class="faculty-item">Wydział Transportu</div><div class="faculty-item">Wydział Zarządzania</div><div class="faculty-item">Kolegium Nauk Ekonomicznych i Społecznych</div></div></div>
+            </div>
+
+            <div id="view-organizacyjna" class="org-view">
+                <div class="org-grid-3col">
+                    <div class="org-column" style="grid-column: span 2;"><div class="org-col-title bg-rektor">Ogólnouczelniane Jednostki i Administracja (podległe bezpośrednio Rektorowi)</div><ul class="org-list org-list-2col"><li>Biblioteka Główna</li><li>Biuro Komunikacji i Promocji</li><li>Biuro Rektora</li><li>Biuro ds. Społecznej Odpowiedzialności Uczelni</li><li>Centrum Cyberbezpieczeństwa</li><li>Centrum Doskonałości Sztucznej Inteligencji</li><li>HealthTEC</li><li>C-QuaNT</li><li>Centrum Innowacji</li><li>Centrum Obsługi Projektów</li><li>Centrum Projektów Rozwojowych</li><li>Centrum Studiów Zaawansowanych</li><li>Centrum Wiarygodnej Sztucznej Inteligencji</li><li>Centrum Wsparcia Dydaktyki</li><li>Centrum Współpracy Międzynarodowej</li><li>CEZAMAT</li><li>Dział Analiz Strategicznych</li><li>Dział Bezpieczeństwa Informacji PW</li><li>Dział ds. Ochrony Informacji Niejawnych i Spraw Obronnych</li><li>Dział Wsparcia Rozwoju Pracowników</li><li>Inspektorat BHP</li><li>Instytut Problemów Współczesnej Cywilizacji im. Marka Dietricha</li><li>Muzeum PW</li><li>Oficyna Wydawnicza</li><li>Ośrodek Kształcenia na Odległość</li><li>Studium Języków Obcych</li><li>Studium Wychowania Fizycznego i Sportu</li><li>Szkoła Biznesu</li><li>Szkoła Doktorska PW</li><li>Uczelniane Centrum Badawcze Lotnictwa i Kosmonautyki</li><li>Uczelniane Centrum Badawcze Obronności i Bezpieczeństwa</li><li>UTW PW</li><li>Zespół Audytu Wewnętrznego</li><li>Zespół ds. Nauki</li><li>Zespół ds. Systemów Zarządzania Jakością</li></ul></div>
+                    <div class="org-column" style="background: transparent; box-shadow: none; gap: 20px;">
+                        <div style="background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05);"><div class="org-col-title bg-kanclerz">Kanclerz</div><ul class="org-list"><li>Administracja Budynków Mieszkalnych</li><li>Archiwum PW</li><li>Biuro Kanclerza</li><li>Biuro Obsługi Prawnej</li><li>Biuro Spraw Osobowych</li><li>Centrum Informatyzacji PW</li><li>Dział Centralnej Sprawozdawczości</li><li>Dział Ekonomiczny</li><li>Dział Inwentaryzacji</li><li>Dział Logistyki i Zakupów</li><li>Dział Socjalny</li><li>Inspektorat Ochrony Przeciwpożarowej</li><li>Samodzielne Stanowisko ds. Promocji Ośrodków Wypoczynkowych oraz Koliby Studenckiej PW</li><li>Straż Akademicka</li></ul><div class="org-sub-title bg-kanclerz-sub">Z-ca Kanclerza ds. Działalności Podstawowej</div><ul class="org-list"><li>Biuro ds. Przyjęć na Studia</li><li>Biuro Karier</li><li>Chór Akademicki PW</li><li>Dział ds. Studiów</li><li>Orkiestra Rozrywkowa PW</li><li>Teatr PW</li><li>Zespół Domów Studenckich</li><li>Zespół Pieśni i Tańca PW</li></ul><div class="org-sub-title bg-kanclerz-sub">Z-ca Kanclerza ds. Technicznych</div><ul class="org-list"><li>Dział Administracyjno Gospodarczy</li><li>Dział Inwestycji i Remontów</li><li>Dział Techniczny</li></ul></div>
+                        <div style="background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05);"><div class="org-col-title bg-kwestor">Kwestor</div><div class="org-sub-title bg-kwestor-sub">Z-ca Kwestora</div><ul class="org-list"><li>Dział Ewidencji Majątku</li><li>Dział Finansowy</li><li>Dział Księgowości</li><li>Dział Płac</li></ul></div>
+                    </div>
+                </div>
+                <div class="org-faculties"><div class="org-col-title bg-wydzialy">Wydziały (Jednostki Podstawowe)</div><div class="faculties-grid"><div class="faculty-item">Wydział Administracji i Nauk Społecznych</div><div class="faculty-item">Wydział Architektury</div><div class="faculty-item">Wydział Budownictwa, Mechaniki i Petrochemii</div><div class="faculty-item">Wydział Chemiczny</div><div class="faculty-item">Wydział Elektroniki i Technik Informacyjnych</div><div class="faculty-item">Wydział Elektryczny</div><div class="faculty-item">Wydział Fizyki</div><div class="faculty-item">Wydział Geodezji i Kartografii</div><div class="faculty-item">Wydział Instalacji Budowlanych, Hydrotechniki i Inż. Środowiska</div><div class="faculty-item">Wydział Inżynierii Chemicznej i Procesowej</div><div class="faculty-item">Wydział Inżynierii Lądowej</div><div class="faculty-item">Wydział Inżynierii Materiałowej</div><div class="faculty-item">Wydział Matematyki i Nauk Informacyjnych</div><div class="faculty-item">Wydział Mechaniczny Energetyki i Lotnictwa</div><div class="faculty-item">Wydział Mechaniczny Technologiczny</div><div class="faculty-item">Wydział Mechatroniki</div><div class="faculty-item">Wydział Samochodów i Maszyn Roboczych</div><div class="faculty-item">Wydział Transportu</div><div class="faculty-item">Wydział Zarządzania</div><div class="faculty-item">Kolegium Nauk Ekonomicznych i Społecznych</div></div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ZAKŁADKA 3: KODY JEDNOSTEK -->
+    <div id="codes-tab" class="table-tab-wrapper tab-content">
+        <div class="data-container">
+            <div class="org-header-doc">
+                <h2>KODY JEDNOSTEK</h2>
+                <p>Wykaz oficjalnych skrótów i oznaczeń numerycznych</p>
+            </div>
+
+            <div class="org-search-container" style="max-width: 100%;">
+                <input type="text" id="codes-search-input" class="org-search-input" placeholder="Wyszukaj jednostkę, symbol lub kod (np. DTECH, 83190000)...">
+            </div>
+
+            <div class="data-table-wrapper">
+                <table class="data-table">
+                    <thead><tr><th>Typ Jednostki</th><th>Nazwa Jednostki</th><th>Symbol (Skrót)</th><th>Kod Jednostki</th></tr></thead>
+                    <tbody id="codes-table-body"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- ZAKŁADKA 4: KSIĄŻKA TELEFONICZNA -->
+    <div id="phone-tab" class="table-tab-wrapper tab-content">
+        <div class="data-container">
+            <div class="org-header-doc">
+                <h2>KSIĄŻKA TELEFONICZNA PW</h2>
+                <p>Baza kontaktów pracowników uczelni</p>
+            </div>
+
+            <div style="text-align: center; margin-bottom: 20px;">
+                <div id="phone-load-status" class="data-status-msg">
+                    Trwa automatyczne ładowanie bazy danych...
+                </div>
+            </div>
+
+            <div class="org-search-container" style="max-width: 100%;">
+                <input type="text" id="phone-search-input" class="org-search-input" placeholder="Szukaj po nazwisku, nr telefonu lub e-mailu (np. Olszewska, 234 8610)...">
+            </div>
+
+            <div class="data-table-wrapper">
+                <table class="data-table">
+                    <thead><tr><th>Imię i Nazwisko</th><th>Dział / Lokalizacja</th><th>Telefony</th><th>E-mail</th></tr></thead>
+                    <tbody id="phone-table-body"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- STOPKA -->
+    <footer id="main-footer">
+        &copy; Artur Kulik
+    </footer>
+
+    <!-- SKRYPTY -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+    <script src="/js/main.js"></script>
+</body>
+</html>

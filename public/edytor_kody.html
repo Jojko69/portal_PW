@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edytor Kodów - Kody Jednostek PW</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/edytor.css">
+</head>
+<body>
+
+    <header>
+        <h1>Edytor: kody_jednostek.json</h1>
+        <div class="header-actions">
+            <a href="/" class="btn btn-link">Wróć do portalu</a>
+            <button class="btn btn-primary" onclick="openModal()">+ Dodaj nową jednostkę</button>
+            <button class="btn btn-save" onclick="saveToServer()">Zapisz plik na serwerze</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <p style="margin-bottom: 15px; font-size: 0.9rem; color: #555;">Zarządzaj bazą numerów gospodarczych. Pamiętaj, aby po wprowadzonych modyfikacjach kliknąć <strong>"Zapisz plik na serwerze"</strong>, aby zmiany zostały trwale zachowane.</p>
+
+        <div id="status-msg"></div>
+
+        <div class="search-container">
+            <input type="text" id="search-input" class="search-input" placeholder="Wyszukaj jednostkę (nazwa, symbol, kod)...">
+        </div>
+
+        <div class="stats-text" id="stats-text">Wczytywanie bazy danych...</div>
+
+        <table id="data-table">
+            <thead>
+                <tr>
+                    <th>Typ Jednostki</th>
+                    <th>Nazwa Jednostki</th>
+                    <th>Symbol (Skrót)</th>
+                    <th>Kod Jednostki</th>
+                    <th>Akcje</th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+                <!-- Tabela generowana przez JS -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- MODAL FORMULARZA -->
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal">
+            <h2 id="modal-title">Dodaj / Edytuj Jednostkę</h2>
+            <form id="editor-form">
+                <input type="hidden" id="edit-index" value="-1">
+
+                <div class="form-group">
+                    <label for="f-type">Typ Jednostki (np. Wydział, Zakład) *</label>
+                    <input type="text" id="f-type" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="f-name">Pełna Nazwa Jednostki *</label>
+                    <input type="text" id="f-name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="f-symbol">Symbol / Skrót (np. WCh)</label>
+                    <input type="text" id="f-symbol">
+                </div>
+
+                <div class="form-group">
+                    <label for="f-code">Kod Jednostki (Dział Gospodarczy + 0000)</label>
+                    <input type="text" id="f-code">
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal()">Anuluj</button>
+                    <button type="submit" class="btn btn-primary" id="btn-modal-save">Zatwierdź jednostkę</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="/js/edytor-kody.js"></script>
+</body>
+</html>

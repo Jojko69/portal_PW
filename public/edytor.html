@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edytor Znaczników - Mapa Obiektów</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/edytor.css">
+</head>
+<body>
+
+    <header>
+        <h1>Edytor: mapa_obiektow.json</h1>
+        <div class="header-actions">
+            <a href="/" class="btn btn-link">Wróć do mapy</a>
+            <button class="btn btn-primary" onclick="openModal()">+ Dodaj nowy obiekt</button>
+            <button class="btn btn-save" onclick="saveToServer()">Zapisz plik na serwerze</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <p style="margin-bottom: 15px; font-size: 0.9rem; color: #555;">Zarządzaj znacznikami widocznymi na mapie. Pamiętaj, aby po wprowadzonych modyfikacjach kliknąć zielony przycisk <strong>"Zapisz plik na serwerze"</strong> w prawym górnym rogu, aby zmiany zostały trwale zachowane.</p>
+
+        <div id="status-msg"></div>
+
+        <table id="data-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nazwa</th>
+                    <th>Kategoria</th>
+                    <th>Adres</th>
+                    <th>Współrzędne (Lat, Lng)</th>
+                    <th>Akcje</th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+                <!-- Tabela generowana przez JS -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- MODAL FORMULARZA -->
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal">
+            <h2 id="modal-title">Dodaj / Edytuj Obiekt</h2>
+            <form id="editor-form">
+                <input type="hidden" id="edit-index" value="-1">
+
+                <div class="form-group">
+                    <label for="f-id">ID (unikalny identyfikator, np. 'custom/nowy-budynek') *</label>
+                    <input type="text" id="f-id" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="f-name">Pełna nazwa (np. 'Wydział Chemiczny') *</label>
+                    <input type="text" id="f-name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="f-short">Skrót (opcjonalny, wyświetlany pod ikoną, np. 'WCh')</label>
+                    <input type="text" id="f-short">
+                </div>
+
+                <div class="form-group">
+                    <label for="f-category">Kategoria *</label>
+                    <select id="f-category" required>
+                        <option value="wydział">Wydział</option>
+                        <option value="administracja">Administracja</option>
+                        <option value="akademik">Akademik</option>
+                        <option value="budynek PW">Budynek PW</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="f-address">Adres (ulica, miasto)</label>
+                    <input type="text" id="f-address">
+                </div>
+
+                <div class="form-group">
+                    <label for="f-desc">Krótki opis</label>
+                    <textarea id="f-desc" rows="2"></textarea>
+                </div>
+
+                <div class="coords-group">
+                    <div class="form-group">
+                        <label for="f-lat">Szerokość geogr. (Lat)</label>
+                        <input type="number" step="any" id="f-lat" placeholder="np. 52.220593" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="f-lng">Długość geogr. (Lng)</label>
+                        <input type="number" step="any" id="f-lng" placeholder="np. 21.010242" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="f-website">Adres strony WWW (opcjonalny)</label>
+                    <input type="url" id="f-website" placeholder="https://...">
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal()">Anuluj</button>
+                    <button type="submit" class="btn btn-primary" id="btn-modal-save">Zatwierdź obiekt</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="/js/edytor-mapa.js"></script>
+</body>
+</html>
