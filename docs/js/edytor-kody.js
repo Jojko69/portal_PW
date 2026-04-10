@@ -14,7 +14,7 @@ function removeDiacritics(str) {
 // 1. Pobranie danych
 async function loadData() {
     try {
-        const response = await fetch('/data/kody_jednostek.json?t=' + new Date().getTime());
+        const response = await fetch('data/kody_jednostek.json?t=' + new Date().getTime());
         if (response.ok) {
             kodyData = await response.json();
 

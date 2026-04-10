@@ -16,7 +16,7 @@ function removeDiacritics(str) {
 // 1. Pobranie danych
 async function loadData() {
     try {
-        const response = await fetch('/data/data_index_partial_optimized.json?t=' + new Date().getTime());
+        const response = await fetch('data/data_index_partial_optimized.json?t=' + new Date().getTime());
         if (response.ok) {
             phonebookData = await response.json();
 

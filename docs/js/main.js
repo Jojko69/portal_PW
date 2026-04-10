@@ -118,7 +118,7 @@ async function fetchLocalJSON() {
             return;
         }
 
-        const response = await fetch('/data/data_index_partial_optimized.json?t=' + new Date().getTime());
+        const response = await fetch('data/data_index_partial_optimized.json?t=' + new Date().getTime());
         if (response.ok) {
             const rawData = await response.json();
             phonebookData = cleanPhonebookData(rawData);
@@ -235,7 +235,7 @@ async function fetchUnitCodes() {
             console.warn("Uruchomiono lokalnie (file://). Pobieranie JSON może nie zadziałać.");
             return;
         }
-        const response = await fetch('/data/kody_jednostek.json?t=' + new Date().getTime());
+        const response = await fetch('data/kody_jednostek.json?t=' + new Date().getTime());
         if (response.ok) {
             unitCodesData = await response.json();
             renderCodesTable(unitCodesData);
@@ -276,7 +276,7 @@ async function fetchMapData() {
             console.warn("Uruchomiono lokalnie (file://). Pobieranie JSON może nie zadziałać. Uruchom przez serwer lokalny.");
         }
 
-        const response = await fetch('/data/mapa_obiektow.json?t=' + new Date().getTime());
+        const response = await fetch('data/mapa_obiektow.json?t=' + new Date().getTime());
         if (response.ok) {
             pwMapData = await response.json();
 

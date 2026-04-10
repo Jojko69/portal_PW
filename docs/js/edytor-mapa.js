@@ -17,7 +17,7 @@ const getTagClass = (category) => {
 // 1. Pobranie danych na start
 async function loadData() {
     try {
-        const response = await fetch('/data/mapa_obiektow.json?t=' + new Date().getTime());
+        const response = await fetch('data/mapa_obiektow.json?t=' + new Date().getTime());
         if (response.ok) {
             mapData = await response.json();
             renderTable();

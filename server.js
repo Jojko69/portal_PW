@@ -4,11 +4,10 @@ const path = require('path');
 
 const PORT = 3000;
 const PUBLIC_DIR = path.join(__dirname, 'docs');
-const DATA_DIR = path.join(__dirname, 'data');
 
-const MAPA_FILE    = path.join(DATA_DIR, 'mapa_obiektow.json');
-const TELEFONY_FILE = path.join(DATA_DIR, 'data_index_partial_optimized.json');
-const KODY_FILE    = path.join(DATA_DIR, 'kody_jednostek.json');
+const MAPA_FILE    = path.join(PUBLIC_DIR, 'data', 'mapa_obiektow.json');
+const TELEFONY_FILE = path.join(PUBLIC_DIR, 'data', 'data_index_partial_optimized.json');
+const KODY_FILE    = path.join(PUBLIC_DIR, 'data', 'kody_jednostek.json');
 
 const MIME_TYPES = {
     '.html': 'text/html; charset=utf-8',
@@ -45,14 +44,8 @@ const server = http.createServer((req, res) => {
     let urlPath = req.url === '/' ? '/index.html' : req.url;
     urlPath = urlPath.split('?')[0]; // Usuń parametry zapytania (np. ?t=123)
 
-    let filePath;
-    if (urlPath.startsWith('/data/')) {
-        // Pliki JSON z katalogu data/
-        filePath = path.join(DATA_DIR, urlPath.slice('/data/'.length));
-    } else {
-        // Pozostałe pliki (HTML, CSS, JS) z katalogu public/
-        filePath = path.join(PUBLIC_DIR, urlPath);
-    }
+    // Wszystkie pliki statyczne (HTML, CSS, JS, JSON) serwowane z docs/
+    const filePath = path.join(PUBLIC_DIR, urlPath);
 
     const extname = String(path.extname(filePath)).toLowerCase();
     const contentType = MIME_TYPES[extname] || 'application/octet-stream';
