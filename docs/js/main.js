@@ -303,7 +303,10 @@ function initMapMarkers() {
 
         if (hasCoords) {
             layer = L.circleMarker(item.coords, { radius: 12, fillColor: markerColor, color: "#ffffff", weight: 2, fillOpacity: 1 });
-            layer.bindTooltip(item.shortName || item.name, { permanent: true, direction: 'right', offset: [10, 0], className: 'classic-tooltip' });
+            const tooltipContent = item.shortName
+                ? `<span class="tt-mpk">${item.shortName}</span><span class="tt-name">${item.name}</span>`
+                : `<span class="tt-name">${item.name}</span>`;
+            layer.bindTooltip(tooltipContent, { permanent: true, direction: 'right', offset: [10, 0], className: 'classic-tooltip', interactive: false });
             layer.bindPopup(`<div class="popup-info"><strong style="color:${markerColor}; text-transform:uppercase; font-size:10px;">${item.category}</strong><h3 style="margin-top:2px; font-size: 1.05rem;">${displayName}</h3><div class="popup-desc">${item.desc}</div><p style="color:#666; font-size:0.8rem;"><strong>Adres:</strong> ${item.address}</p></div>`);
             layer.addTo(mapLayers[item.category]);
         }
