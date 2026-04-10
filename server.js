@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 const PORT = 3000;
-const PUBLIC_DIR = path.join(__dirname, 'public');
+const PUBLIC_DIR = path.join(__dirname, 'docs');
 const DATA_DIR = path.join(__dirname, 'data');
 
 const MAPA_FILE    = path.join(DATA_DIR, 'mapa_obiektow.json');
