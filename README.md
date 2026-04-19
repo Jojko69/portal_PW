@@ -107,4 +107,3 @@ w interfejsie webowym lub przez skrypty Pythona w katalogu `scripts/` (źródło
 ## Licencja
 
 Projekt wewnętrzny — przeznaczony do użytku na Politechnice Warszawskiej.
-<!-- test sync Sun, Apr 19, 2026  3:29:38 PM -->
